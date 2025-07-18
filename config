@@ -717,10 +717,10 @@ Test (f $[FVWM_USERDIR]/local.config) Read $[FVWM_USERDIR]/local.config
 # start programs
 
 # compositor (fix screen tearing)
-Exec exec picom
+Test (Init) Exec exec picom
 
 # tray
-Exec exec nm-applet
-Exec exec cbatticon
-Exec exec pasystray
-Exec exec blueman-applet
+Test (Init) Exec exec nm-applet
+Test (Init) Exec exec cbatticon
+Test (Init) Exec exec pasystray
+Test (Init) Exec exec blueman-applet
