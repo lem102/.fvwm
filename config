@@ -712,3 +712,15 @@ DestroyModuleConfig EventNewDesk:*
 # without needing a full copy of the default-config. This will also allow
 # default-config changes to get used after upgrades (if applicable).
 Test (f $[FVWM_USERDIR]/local.config) Read $[FVWM_USERDIR]/local.config
+
+
+# start programs
+
+# compositor (fix screen tearing)
+Exec exec picom
+
+# tray
+Exec exec nm-applet
+Exec exec cbatticon
+Exec exec pasystray
+Exec exec blueman-applet
