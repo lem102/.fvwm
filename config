@@ -196,7 +196,7 @@ DesktopSize 2x2
 # for how long the mouse as at the edge before it scrolls.
 #
 # Set EdgeScroll 0 0 and/or EdgeResistance -1 to disable.
-EdgeScroll 100 100
+EdgeScroll 100 100 wrap
 EdgeResistance scrolling
 EdgeThickness 1
 Style * EdgeMoveDelay scrolling
