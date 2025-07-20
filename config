@@ -625,16 +625,15 @@ DestroyModuleConfig FvwmScript:*
 #
 # Note - To use the system tray you must have "stalonetray" installed.
 DestroyModuleConfig RightPanel:*
-*RightPanel: Geometry 120x385-0+0@p
+*RightPanel: Geometry 120x180-0+0@p
 *RightPanel: Colorset 10
-*RightPanel: Rows 8
+*RightPanel: Rows 4
 *RightPanel: Columns 1
 *RightPanel: Frame 0
 *RightPanel: Font "xft:Sans:Bold:size=10:antialias=True"
 *RightPanel: (1x1, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime', Frame 0)
 *RightPanel: (1x1, Swallow(NoClose,UseOld) stalonetray 'Exec exec stalonetray --config "$[FVWM_USERDIR]/stalonetrayrc"', Frame 0)
-*RightPanel: (1x3, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
-*RightPanel: (1x3, Top, Swallow FvwmIconMan 'Module FvwmIconMan', Frame 0)
+*RightPanel: (1x2, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
 
 # FvwmPager
 #
