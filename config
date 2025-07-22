@@ -79,6 +79,7 @@ AddToFunc   StartFunction
 + I Test (Init) InitBackground
 + I Module FvwmButtons RightPanel
 + I Module FvwmEvent EventNewDesk
++ I Module FvwmButtons TimestampPanel
 + I Test (Init) Exec exec emacs
 
 # Function to set background when fvwm starts
@@ -263,6 +264,8 @@ Style * Lenience
 # Window Specific Styles
 Style RightPanel !Title, !Borders, !Handles, Sticky, \
                  WindowListSkip, NeverFocus
+Style TimestampPanel !Title, !Borders, !Handles, Sticky, \
+                     WindowListSkip, NeverFocus, StaysOnTop
 Style ConfirmQuit !Title, PositionPlacement Center, WindowListSkip, Layer 6
 Style FvwmIdent WindowListSkip
 
@@ -632,9 +635,14 @@ DestroyModuleConfig RightPanel:*
 *RightPanel: Columns 1
 *RightPanel: Frame 0
 *RightPanel: Font "xft:Sans:Bold:size=10:antialias=True"
-*RightPanel: (1x1, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime', Frame 0)
 *RightPanel: (1x1, Swallow(NoClose,UseOld) stalonetray 'Exec exec stalonetray --config "$[FVWM_USERDIR]/stalonetrayrc"', Frame 0)
 *RightPanel: (1x2, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
+
+DestroyModuleConfig TimestampPanel:*
+*TimestampPanel: Geometry 150x20+1770+1060
+*TimestampPanel: Rows 1
+*TimestampPanel: Columns 1
+*TimestampPanel: (Swallow Timestamp 'Module FvwmScript FvwmScript-Timestamp', Frame 0)
 
 # FvwmPager
 #
