@@ -581,6 +581,8 @@ Key F4      WTSF    M   Close
 Key Left    WTSF    4   MoveWindowLeftSide
 Key Right   WTSF    4   MoveWindowRightSide
 
+Key r       A       4   Restart
+
 #######
 # 6: Window Decor
 #
