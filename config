@@ -380,8 +380,9 @@ Test (x vlc) + "VLC" Exec exec vlc
 DestroyMenu SystemMenu
 AddToMenu   SystemMenu "System" Title
 + "Restart Lvwm" Restart
-+ "Shutdown System" Exec exec systemctl poweroff
++ "Logout" Module FvwmScript FvwmScript-ConfirmQuit
 + "Restart System" Exec exec systemctl reboot
++ "Shutdown System" Exec exec systemctl poweroff
 
 # Background Menu
 #
