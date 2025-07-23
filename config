@@ -79,8 +79,12 @@ AddToFunc   StartFunction
 + I Test (Init) InitBackground
 + I Module FvwmButtons RightPanel
 + I Module FvwmEvent EventNewDesk
-+ I Module FvwmButtons TimestampPanel
 + I Test (Init) Exec exec emacs
++ I Test (Init) Exec exec picom
++ I Test (Init) Exec exec nm-applet
++ I Test (Init) Exec exec cbatticon
++ I Test (Init) Exec exec pasystray
++ I Test (Init) Exec exec blueman-applet
 
 # Function to set background when fvwm starts
 DestroyFunc InitBackground
@@ -703,14 +707,3 @@ DestroyModuleConfig EventNewDesk:*
 # default-config changes to get used after upgrades (if applicable).
 Test (f $[FVWM_USERDIR]/local.config) Read $[FVWM_USERDIR]/local.config
 
-
-# start programs
-
-# compositor (fix screen tearing)
-Test (Init) Exec exec picom
-
-# tray
-Test (Init) Exec exec nm-applet
-Test (Init) Exec exec cbatticon
-Test (Init) Exec exec pasystray
-Test (Init) Exec exec blueman-applet
