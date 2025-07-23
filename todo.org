@@ -8,7 +8,17 @@ Apparently I should look into =xmodmap=.
 
 ** TODO emacs maximise command doesn't work after using move window left/right side commands
 
-** TODO 
+** DONE launch applications via the menu.
+
+*** DONE button in panel that creates menu
+
+** TODO summon windows to page via menu in root window
+
+** TODO set a picture as the right panel background
+
+Select summon from the menu, then display a list of summonable programs. Possibly needs an external script to generate the list of windows via PipeRead.
+
+how can i do this via keyboard?
 
 * What do I want out of fvwm?
 
