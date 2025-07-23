@@ -1,0 +1,79 @@
+* Tasks
+
+** DONE bind super+up to maximise
+
+*** DONE figure out how to make super a modifier key
+
+Apparently I should look into =xmodmap=.
+
+** TODO emacs maximise command doesn't work after using move window left/right side commands
+
+** TODO 
+
+* What do I want out of fvwm?
+
+- quickly + precisely switch windows
+- mouse + keyboard driven
+- minimal window decorations
+- easily make windows fullscreen
+- easily make windows occupy either the left/right side of the screen
+- system tray
+- time and date
+- screenshot
+- record screen
+- restart lvwm, restart system, logout, shutdown
+- a unique aesthetic
+
+** quickly + precisely switch windows
+*** keyboard
+
+shortcut for common applications, e.g. Super+1 switches to emacs
+
+what about uncommon applications?
+
+e.g. file browsers, terminals, drawing software
+
+*** mouse
+
+use the taskbar?
+
+can the pager move around or switch windows simply by mousing over them? (run or raise via taskbar)
+
+** launch programs
+*** mouse
+
+root window menu, start programs maximised, left side or right side
+
+*** keyboard
+
+for common applications like emacs, can use the keybinding to launch new instances maximised. can have a shortcut to use left/right side of the screen.
+
+** manipulate windows
+
+*** mouse
+
+window buttons for:
+
+- (toggle) maximise
+- close
+- tile left
+- tile right
+
+*** keyboard
+
+shortcuts for:
+
+| key         | action            |
+|-------------+-------------------|
+| Super+Up    | (toggle) maximise |
+| Alt+F4      | close             |
+| Super+Left  | tile left         |
+| Super+Right | tile right        |
+
+** aesthetic
+
+victorian? celtic?
+
+should be something unique to meeee
+
+
