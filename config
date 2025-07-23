@@ -190,11 +190,7 @@ AddToFunc   ChangeDesk
 #   |   |   |
 #   +---+---+
 #
-DesktopName 0 Main
-DesktopName 1 Desk1
-DesktopName 2 Desk2
-DesktopName 3 Desk3
-DesktopSize 2x2
+DesktopSize 1x9
 
 # EdgeScroll will move the view port between the Pages when the mouse
 # moves to the edge of the screen. This set the amount of distance to
@@ -211,7 +207,7 @@ Style * EdgeMoveResistance moving
 # EwmhBaseStruts [screen name] [left] [right] [top] [bottom]
 # Reserves space along the edge(s) of the Screen that will not
 # be covered when maximizing or placing windows.
-EwmhBaseStruts screen $[monitor.primary] 0 120 0 0
+EwmhBaseStruts screen $[monitor.primary] 0 70 0 0
 
 # This sets the ClickTime and MoveThreshold used to determine
 # Double Clicks, Hold and Move for the mouse.
@@ -268,8 +264,6 @@ Style * Lenience
 # Window Specific Styles
 Style RightPanel !Title, !Borders, !Handles, Sticky, \
                  WindowListSkip, NeverFocus
-Style TimestampPanel !Title, !Borders, !Handles, Sticky, \
-                     WindowListSkip, NeverFocus, StaysOnTop
 Style ConfirmQuit !Title, PositionPlacement Center, WindowListSkip, Layer 6
 Style FvwmIdent WindowListSkip
 
@@ -633,27 +627,22 @@ DestroyModuleConfig FvwmScript:*
 #
 # Note - To use the system tray you must have "stalonetray" installed.
 DestroyModuleConfig RightPanel:*
-*RightPanel: Geometry 120x180-0+0@p
+*RightPanel: Geometry 70x1080-0+0@p
 *RightPanel: Colorset 10
-*RightPanel: Rows 4
+*RightPanel: Rows 20
 *RightPanel: Columns 1
 *RightPanel: Frame 0
 *RightPanel: Font "xft:Sans:Bold:size=10:antialias=True"
-*RightPanel: (1x1, Swallow(NoClose,UseOld) stalonetray 'Exec exec stalonetray --config "$[FVWM_USERDIR]/stalonetrayrc"', Frame 0)
-*RightPanel: (1x2, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
-
-DestroyModuleConfig TimestampPanel:*
-*TimestampPanel: Geometry 150x20+1770+1060
-*TimestampPanel: Rows 1
-*TimestampPanel: Columns 1
-*TimestampPanel: (Swallow Timestamp 'Module FvwmScript FvwmScript-Timestamp', Frame 0)
+*RightPanel: (1x13, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
+*RightPanel: (1x4, Top, Swallow FvwmIconMan 'Module FvwmIconMan', Frame 0)
+*RightPanel: (1x2, Swallow(NoClose,UseOld) stalonetray 'Exec exec stalonetray --config "$[FVWM_USERDIR]/stalonetrayrc"', Frame 0)
+*RightPanel: (1x1, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime', Frame 0)
 
 # FvwmPager
 #
 # This module displays the location of the windows on the various Pages
 # and Desks. This is setup to show only the Pages on the current Desk.
 DestroyModuleConfig FvwmPager:*
-*FvwmPager: Geometry 120x80
 *FvwmPager: Colorset * 10
 *FvwmPager: HilightColorset * 13
 *FvwmPager: BalloonColorset * 10
