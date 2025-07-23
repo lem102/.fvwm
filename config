@@ -111,6 +111,15 @@ AddToFunc MoveToCurrent
 + I ThisWindow MoveToPage
 + I ThisWindow MoveToDesk
 
+DestroyFunc MoveWindowLeftSide
+AddToFunc MoveWindowLeftSide
+# ResizeMove frame means we include the frame of each window in the percentages given to Resize
++ I ResizeMove frame 50wa 100wa 0 0
+
+DestroyFunc MoveWindowRightSide
+AddToFunc MoveWindowRightSide
++ I ResizeMove frame 50wa 100wa 50 0
+
 # Function: ViewManPage $0
 #
 # This function loads the man page $0 in an terminal
@@ -514,12 +523,16 @@ Test (x $[infostore.runcmd]) Silent Key Space A M Exec exec $[infostore.runcmd] 
 #   2 - Close on single click, Destory on double click.
 #   4 - Maximize (right/middle button will only maximize vertical/horizontal)
 #   6 - Iconify (minimize)
+#   8 - Move to right side of screen
+#   0 - Move to left side of screen
 Mouse 1 1 A Menu MenuWindowOps Delete
 Mouse 1 2 A Close
 Mouse 1 4 A Maximize 100 100
 Mouse 2 4 A Maximize 0 100
 Mouse 3 4 A Maximize 100 0
 Mouse 1 6 A Iconify
+Mouse 1 8 A MoveWindowRightSide
+Mouse 1 0 A MoveWindowLeftSide
 
 #   TitleBar: Click to Raise, Move, Double Click to Maximize
 #             Mouse Wheel Up/Down to WindowShade On/Off
@@ -560,6 +573,14 @@ Key Down    WTSF    CSM Maximize True 0 growdown
 Key Right   WTSF    CSM Maximize True growright 0
 Key Left    WTSF    CSM Maximize True growleft 0
 
+# jacob's bindings
+# 4 refers to mod4, which refers to the super key
+
+Key Up      WTSF    4   Maximize
+Key F4      WTSF    M   Close
+Key Left    WTSF    4   MoveWindowLeftSide
+Key Right   WTSF    4   MoveWindowRightSide
+
 #######
 # 6: Window Decor
 #
@@ -590,6 +611,8 @@ AddButtonStyle 4 Active Vector 8 30x70@3 30x30@3 70x30@3 70x70@3 30x70@3 \
 AddButtonStyle 4 ToggledActiveUp Vector 8 30x70@3 30x30@3 70x30@3 70x70@3 \
                  30x70@3 50x30@4 50x50@3 70x50@3
 AddButtonStyle 6 Active Vector 5 35x60@3 65x60@3 65x50@3 35x50@3 35x60@3
+AddButtonStyle 8 Active Vector 4 70x50@3 30x70@3 30x30@3 70x50@3
+AddButtonStyle 0 Active Vector 4 30x50@3 70x70@3 70x30@3 30x50@3
 ButtonStyle All - Clear
 ButtonStyle 1 - MwmDecorMenu
 ButtonStyle 4 - MwmDecorMax
