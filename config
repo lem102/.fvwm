@@ -603,6 +603,8 @@ Key r       A       4   Restart
 
 Key 1 A 4 RunOrRaise "*Emacs*" 0 emacs
 Key 2 A 4 RunOrRaise "*Mozilla Firefox*" 1 firefox
+Test (x discord) Key 3 A 4 RunOrRaise "* Discord" 2 discord
+Test (x slack) Key 3 A 4 RunOrRaise "*Slack*" 2 slack
 
 #######
 # 6: Window Decor
