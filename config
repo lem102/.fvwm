@@ -120,6 +120,18 @@ DestroyFunc MoveWindowRightSide
 AddToFunc MoveWindowRightSide
 + I ResizeMove frame 50wa 100wa 50 0
 
+# LaunchProgramInWindow(pageNumber, program)
+DestroyFunc LaunchProgramInWindow
+AddToFunc LaunchProgramInWindow
++ I GotoPage 0 $0
++ I Schedule 500 Exec exec $1
+
+# RunOrRaise(matchWindow, pageNumber, program)
+DestroyFunc RunOrRaise
+AddToFunc RunOrRaise
++ I Next ("$0") Focus
++ I None ("$0") LaunchProgramInWindow $1 $2
+
 # Function: ViewManPage $0
 #
 # This function loads the man page $0 in an terminal
@@ -588,6 +600,9 @@ Key Left    WTSF    4   MoveWindowLeftSide
 Key Right   WTSF    4   MoveWindowRightSide
 
 Key r       A       4   Restart
+
+Key 1 A 4 RunOrRaise "*Emacs*" 0 emacs
+Key 2 A 4 RunOrRaise "*Mozilla Firefox*" 1 firefox
 
 #######
 # 6: Window Decor
