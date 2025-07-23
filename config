@@ -658,8 +658,9 @@ DestroyModuleConfig RightPanel:*
 *RightPanel: Columns 1
 *RightPanel: Frame 0
 *RightPanel: Font "xft:Sans:Bold:size=10:antialias=True"
-*RightPanel: (1x13, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
+*RightPanel: (1x12, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
 *RightPanel: (1x4, Top, Swallow FvwmIconMan 'Module FvwmIconMan', Frame 0)
+*RightPanel: (1x1, Colorset 1, Icon "icons/restart.png", Action Restart, Frame 1)
 *RightPanel: (1x2, Swallow(NoClose,UseOld) stalonetray 'Exec exec stalonetray --config "$[FVWM_USERDIR]/stalonetrayrc"', Frame 0)
 *RightPanel: (1x1, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime', Frame 0)
 
@@ -720,4 +721,3 @@ DestroyModuleConfig EventNewDesk:*
 # without needing a full copy of the default-config. This will also allow
 # default-config changes to get used after upgrades (if applicable).
 Test (f $[FVWM_USERDIR]/local.config) Read $[FVWM_USERDIR]/local.config
-
