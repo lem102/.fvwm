@@ -377,6 +377,11 @@ Test (x $[infostore.runcmd]) + "R&un Command%icons/run_arrow.png%" Exec exec $[i
 Test (x $[FVWM_MODULEDIR]/FvwmConsole) + "Fvwm&Console%icons/terminal.png%" Module FvwmConsole -terminal $[infostore.terminal]
 Test (x FvwmPrompt) + "&FvwmPrompt%icons/terminal.png%" Exec exec $[infostore.terminal] -e FvwmPrompt
 + "$[gt.&Wallpapers]%icons/wallpaper.png%" Popup BGMenu
++ "" Nop
++ "Restart Fvwm" Restart
++ "Logout" Module FvwmScript FvwmScript-ConfirmQuit
++ "Restart System" Exec exec systemctl reboot
++ "Shutdown System" Exec exec systemctl poweroff
 
 # Generate XDGMenu
 PipeRead "fvwm3-menu-desktop -e"
@@ -395,13 +400,6 @@ Test (x gvim) + "gVim" Exec exec gvim
 Test (x emacs) + "Emacs" Exec exec emacs
 Test (x gimp) + "Gimp" Exec exec gimp
 Test (x vlc) + "VLC" Exec exec vlc
-
-DestroyMenu SystemMenu
-AddToMenu   SystemMenu "System" Title
-+ "Restart Fvwm" Restart
-+ "Logout" Module FvwmScript FvwmScript-ConfirmQuit
-+ "Restart System" Exec exec systemctl reboot
-+ "Shutdown System" Exec exec systemctl poweroff
 
 # Background Menu
 #
@@ -706,10 +704,9 @@ DestroyModuleConfig RightPanel:*
 *RightPanel: Columns 1
 *RightPanel: Frame 0
 *RightPanel: Font "xft:Sans:Bold:size=10:antialias=True"
-*RightPanel: (1x1, Title "Start", Action Menu MenuFvwmRoot, Frame 1)
-*RightPanel: (1x11, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
+*RightPanel: (1x1, Title "Menu", Action Menu MenuFvwmRoot, Frame 1)
+*RightPanel: (1x12, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
 *RightPanel: (1x4, Top, Swallow FvwmIconMan 'Module FvwmIconMan', Frame 0)
-*RightPanel: (1x1, Icon "icons/restart.png", Action Menu SystemMenu, Frame 1)
 *RightPanel: (1x2, Swallow(NoClose,UseOld) stalonetray 'Exec exec stalonetray --config "$[FVWM_USERDIR]/stalonetrayrc"', Frame 0)
 *RightPanel: (1x1, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime', Frame 0)
 
