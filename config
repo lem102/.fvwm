@@ -130,11 +130,11 @@ AddToFunc LaunchProgramInWindow
 DestroyFunc RunOrRaise
 AddToFunc RunOrRaise
 + I Next ("$0") Focus
-+ I None ("$0") LaunchProgramInWindow $1 $2
++ I None ("$0") LaunchProgramInWindow $1 "$2"
 
 DestroyFunc RunOrRaiseEmacs
 AddToFunc RunOrRaiseEmacs
-+ I RunOrRaise "*Emacs*" 0 emacs
++ I RunOrRaise "*Emacs*" 0 "emacs --maximized"
 
 DestroyFunc RunOrRaiseFirefox
 AddToFunc RunOrRaiseFirefox
