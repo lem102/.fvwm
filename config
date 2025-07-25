@@ -98,6 +98,12 @@ AddToFunc RaiseMove
 + I Raise
 + M $0
 
+AddToFunc SelectWindow
++ I Focus
++ I Iconify false
++ I Raise
++ I WarpToWindow 50 50
+
 DestroyFunc MoveToCurrent
 AddToFunc MoveToCurrent
 + I ThisWindow MoveToPage
@@ -107,39 +113,39 @@ DestroyFunc MoveWindowLeftSide
 AddToFunc MoveWindowLeftSide
 # ResizeMove frame means we include the frame of each window in the percentages given to Resize
 + I ResizeMove frame 50wa 100wa 0 0
++ I SelectWindow
 
 DestroyFunc MoveWindowRightSide
 AddToFunc MoveWindowRightSide
 + I ResizeMove frame 50wa 100wa 50 0
++ I SelectWindow
 
-# LaunchProgramInWindow(pageNumber, program)
-DestroyFunc LaunchProgramInWindow
-AddToFunc LaunchProgramInWindow
-+ I GotoPage 0 $0
-+ I Schedule 500 Exec exec $1
-
-# RunOrRaise(matchWindow, pageNumber, program)
+# RunOrRaise(windowTitleRegex, commandLine)
 DestroyFunc RunOrRaise
 AddToFunc RunOrRaise
-+ I Next ("$0") Focus
-+ I None ("$0") LaunchProgramInWindow $1 "$2"
++ I Next ("$0") SelectWindow
++ I None ("$0") Exec exec $1
 
 DestroyFunc RunOrRaiseEmacs
 AddToFunc RunOrRaiseEmacs
-+ I RunOrRaise "*Emacs*" 0 "emacs --maximized"
++ I RunOrRaise "*Emacs*" "emacs --maximized"
 
 DestroyFunc RunOrRaiseFirefox
 AddToFunc RunOrRaiseFirefox
-+ I RunOrRaise "*Mozilla Firefox*" 1 firefox
++ I RunOrRaise "*Mozilla Firefox*" firefox
 
 DestroyFunc RunOrRaiseDiscord
 AddToFunc RunOrRaiseDiscord
-+ I RunOrRaise "* Discord" 2 discord
++ I RunOrRaise "* Discord" discord
+
+DestroyFunc RunOrRaiseSlack
+AddToFunc RunOrRaiseSlack
++ I RunOrRaise "* Slack" slack
 
 DestroyFunc Screenshot
 AddToFunc Screenshot
 # TODO: put the directory in a config file
-+ I Exec exec scrot --select --file "/home/user/Pictures/Screenshots/%Y-%m-%dT%H:%M:%S:%z.png"
++ I Exec exec scrot --select --file "/home/jacobl/Pictures/Screenshots/%Y-%m-%dT%H:%M:%S:%z.png"
 
 DestroyFunc Record
 AddToFunc Record
@@ -205,7 +211,7 @@ AddToFunc   ChangeDesk
 #   |   |   |
 #   +---+---+
 #
-DesktopSize 1x9
+DesktopSize 1x1
 
 # EdgeScroll will move the view port between the Pages when the mouse
 # moves to the edge of the screen. This set the amount of distance to
@@ -213,11 +219,10 @@ DesktopSize 1x9
 # for how long the mouse as at the edge before it scrolls.
 #
 # Set EdgeScroll 0 0 and/or EdgeResistance -1 to disable.
-EdgeScroll 100 100 wrap
-EdgeResistance scrolling
+EdgeScroll 100 100
+EdgeResistance 450
 EdgeThickness 1
-Style * EdgeMoveDelay scrolling
-Style * EdgeMoveResistance moving
+Style * EdgeMoveDelay 350, EdgeMoveResistance 350
 
 # EwmhBaseStruts [screen name] [left] [right] [top] [bottom]
 # Reserves space along the edge(s) of the Screen that will not
@@ -416,9 +421,6 @@ AddToMenu   MenuIconOps
 + "$[gt.(Un)Shade]%icons/win/shade.png%"     WindowShade
 + "$[gt.(Un)Sticky]%icons/win/sticky.png%"   Stick
 + "$[gt.(No)TitleBar]%icons/win/title.png%"  Pick (CirculateHit) ToggleTitle
-+ "$[gt.Summon]" MoveToCurrent
-+ "$[gt.Summon Left]" MoveWindowLeftSide
-+ "$[gt.Summon Right]" MoveWindowRightSide
 + "$[gt.Send To]%icons/win/sendto.png%"      Popup MenuSendTo
 + "" Nop
 + "$[gt.Close]%icons/win/close.png%"     Close
@@ -586,7 +588,7 @@ Key r       A       4   Restart
 Key 1 A 4 RunOrRaiseEmacs
 Key 2 A 4 RunOrRaiseFirefox
 Test (x discord)    Key 3 A 4 RunOrRaiseDiscord
-Test (x slack)      Key 3 A 4 RunOrRaise "*Slack*" 2 slack
+Test (x slack)      Key 3 A 4 RunOrRaiseSlack
 
 Key Print A N Screenshot
 Key Print A M Record
@@ -667,8 +669,7 @@ DestroyModuleConfig RightPanel:*
 *RightPanel: Frame 0
 *RightPanel: Font "xft:Sans:Bold:size=10:antialias=True"
 *RightPanel: (1x1, Title "Menu", Action Menu MenuFvwmRoot, Frame 1)
-*RightPanel: (1x12, Swallow FvwmPager 'Module FvwmPager *', Frame 0)
-*RightPanel: (1x4, Top, Swallow FvwmIconMan 'Module FvwmIconMan', Frame 0)
+*RightPanel: (1x16, Top, Swallow FvwmIconMan 'Module FvwmIconMan', Frame 0)
 *RightPanel: (1x2, Swallow(NoClose,UseOld) stalonetray 'Exec exec stalonetray --config "$[FVWM_USERDIR]/stalonetrayrc"', Frame 0)
 *RightPanel: (1x1, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime', Frame 0)
 
