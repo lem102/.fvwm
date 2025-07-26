@@ -98,11 +98,12 @@ AddToFunc RaiseMove
 + I Raise
 + M $0
 
+# SelectWindow(shouldWarp: boolean)
 AddToFunc SelectWindow
 + I Focus
 + I Iconify false
 + I Raise
-+ I WarpToWindow 50 50
++ I Test ($0) WarpToWindow 50 50
 
 DestroyFunc MoveToCurrent
 AddToFunc MoveToCurrent
@@ -113,17 +114,17 @@ DestroyFunc MoveWindowLeftSide
 AddToFunc MoveWindowLeftSide
 # ResizeMove frame means we include the frame of each window in the percentages given to Resize
 + I ResizeMove frame 50wa 100wa 0 0
-+ I SelectWindow
++ I SelectWindow True
 
 DestroyFunc MoveWindowRightSide
 AddToFunc MoveWindowRightSide
 + I ResizeMove frame 50wa 100wa 50 0
-+ I SelectWindow
++ I SelectWindow True
 
 # RunOrRaise(windowTitleRegex, commandLine)
 DestroyFunc RunOrRaise
 AddToFunc RunOrRaise
-+ I Next ("$0") SelectWindow
++ I Next ("$0") SelectWindow True
 + I None ("$0") Exec exec $1
 
 DestroyFunc RunOrRaiseEmacs
@@ -664,7 +665,7 @@ DestroyModuleConfig FvwmIconMan:*
 *FvwmIconMan: Format "%t"
 *FvwmIconMan: Font "xft:Sans:Bold:size=8:antialias=True"
 *FvwmIconMan: Action Mouse 0 A ret
-*FvwmIconMan: Action Mouse 1 A sendcommand IconManClick
+*FvwmIconMan: Action Mouse 1 A sendcommand "SelectWindow False"
 *FvwmIconMan: Action Mouse 3 A sendcommand "Menu MenuIconOps"
 *FvwmIconMan: Resolution global
 *FvwmIconMan: Tips needed
