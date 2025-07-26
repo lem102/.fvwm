@@ -145,7 +145,7 @@ AddToFunc RunOrRaiseSlack
 DestroyFunc Screenshot
 AddToFunc Screenshot
 # TODO: put the directory in a config file
-+ I Exec exec scrot --select --file "/home/jacobl/Pictures/Screenshots/%Y-%m-%dT%H:%M:%S:%z.png"
++ I Exec exec scrot --select --file "$HOME/Pictures/Screenshots/%Y-%m-%dT%H:%M:%S:%z.png"
 
 DestroyFunc Record
 AddToFunc Record
