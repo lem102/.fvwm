@@ -256,6 +256,10 @@ DefaultFont "xft:Sans:Bold:size=8:antialias=True"
 # displaying a transparent grid.
 Style * ResizeOpaque
 
+# Show the window whilst it is being moved instead of displaying a
+# transparent grid.
+OpaqueMoveSize unlimited
+
 # Display window decorations on transient windows.
 Style * DecorateTransient
 
