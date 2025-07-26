@@ -151,18 +151,6 @@ DestroyFunc Record
 AddToFunc Record
 + I Exec exec simplescreenrecorder
 
-# Function: ViewManPage $0
-#
-# This function loads the man page $0 in an terminal
-# and is used with the help menu. If the manual page is
-# not found, point users at fvwm.org and keep terminal open.
-DestroyFunc ViewManPage
-AddToFunc   ViewManPage
-+ I Exec exec $[infostore.terminal] -g 80x40 \
-  -n "Manual Page - $0" -T "Manual Page - $0" -e 'man "$0" || \
-  (echo "$[gt.Documentation can be found at https://www.fvwm.org]"; \
-  read tmp)'
-
 # Function: IconManClick
 #
 # This function is run from FvwmIconMan when the button is clicked.
@@ -452,35 +440,6 @@ AddToMenu   MenuSendToPage
 + "$[gt.Page] (1,0)" MoveToPage 1 0
 + "$[gt.Page] (1,1)" MoveToPage 1 1
 
-
-# Fvwm Man Pages (Help) Menu
-DestroyMenu MenuFvwmManPages
-AddToMenu   MenuFvwmManPages "Help" Title
-+ "fvwm3"         ViewManPage fvwm3
-+ "fvwm3commands" ViewManPage fvwm3commands
-+ "fvwm3styles"   ViewManPage fvwm3styles
-+ "fvwm3menus"    ViewManPage fvwm3menus
-+ "fvwm3all"      ViewManPage fvwm3all
-+ "" Nop
-+ "FvwmAnimate"   ViewManPage Fvwm3Animate
-+ "FvwmAuto"      ViewManPage Fvwm3Auto
-+ "FvwmBacker"    ViewManPage Fvwm3Backer
-+ "FvwmButtons"   ViewManPage Fvwm3Buttons
-+ "FvwmCommand"   ViewManPage Fvwm3Command
-Test (x $[FVWM_MODULEDIR]/FvwmConsole) + "FvwmConsole" ViewManPage Fvwm3Console
-+ "FvwmEvent"     ViewManPage Fvwm3Event
-+ "FvwmIconMan"   ViewManPage Fvwm3IconMan
-+ "FvwmIdent"     ViewManPage Fvwm3Ident
-+ "FvwmPager"     ViewManPage Fvwm3Pager
-+ "FvwmPerl"      ViewManPage Fvwm3Perl
-Test (x FvwmPrompt) + "FvwmPrompt" ViewManPage FvwmPrompt
-+ "FvwmRearrange" ViewManPage Fvwm3Rearrange
-+ "FvwmScript"    ViewManPage Fvwm3Script
-+ "" Nop
-+ "fvwm3-root"           ViewManPage fvwm3-root
-+ "fvwm3-menu-desktop"   ViewManPage fvwm3-menu-desktop
-+ "fvwm3-menu-directory" ViewManPage fvwm3-menu-directory
-+ "fvwm3-menu-xlock"     ViewManPage fvwm3-menu-xlock
 
 #######
 # 5: Mouse and Key bindings
