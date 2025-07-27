@@ -619,22 +619,6 @@ DestroyModuleConfig RightPanel:*
 *RightPanel: (1x2, Swallow(NoClose,UseOld) stalonetray 'Exec exec stalonetray --config "$[FVWM_USERDIR]/stalonetrayrc"', Frame 0)
 *RightPanel: (1x1, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime', Frame 0)
 
-# FvwmPager
-#
-# This module displays the location of the windows on the various Pages
-# and Desks. This is setup to show only the Pages on the current Desk.
-DestroyModuleConfig FvwmPager:*
-*FvwmPager: Colorset * 10
-*FvwmPager: HilightColorset * 13
-*FvwmPager: BalloonColorset * 10
-*FvwmPager: WindowColorsets 10 11
-*FvwmPager: Font None
-*FvwmPager: Balloons All
-*FvwmPager: BalloonFont "xft:Sans:Bold:size=8:antialias=True"
-*FvwmPager: BallonYOffset +2
-*FvwmPager: Window3dBorders
-*FvwmPager: MiniIcons
-
 # FvwmIconMan
 #
 # FvwmIconMan is a powerful tool to list and manage windows. This
