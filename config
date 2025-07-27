@@ -227,6 +227,9 @@ FocusStyle * GrabFocus, GrabFocusTransient
 # applications (such as java and electron apps) behave better.
 FocusStyle * Lenient
 
+# When creating new windows, try to prevent overlapping where possible.
+Style * MinOverlapPercentPlacement
+
 # Default Font
 DefaultFont "xft:Sans:Bold:size=8:antialias=True"
 
