@@ -172,18 +172,6 @@ AddToFunc   ToggleTitle
 + I ThisWindow (HasTitle) WindowStyle !Title
 + I TestRc (NoMatch) WindowStyle Title
 
-# Function: ChangeDesk
-#
-# This function is called by FvwmEvent every time the Desk is changed.
-DestroyFunc ChangeDesk
-AddToFunc   ChangeDesk
-+ I SendToModule FvwmButtons ChangeButton desk0 Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk1 Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk2 Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk3 Colorset 10
-+ I SendToModule FvwmButtons ChangeButton desk$0 Colorset 11
-
-
 #############
 # 2: Styles #
 #############
@@ -671,15 +659,6 @@ DestroyModuleConfig FvwmIconMan:*
 *FvwmIconMan: Resolution global
 *FvwmIconMan: Tips needed
 *FvwmIconMan: Sort id
-
-# FvwmEvent
-#
-# FvwmEvent is a module that can run an action or function
-# on specific events. This instance changes which desk number
-# is highlighted when the desk is changed.
-DestroyModuleConfig EventNewDesk:*
-*EventNewDesk: PassID
-*EventNewDesk: new_desk ChangeDesk
 
 DestroyModuleConfig EventMouseEntersWindow:*
 *EventMouseEntersWindow: focus_change Raise
