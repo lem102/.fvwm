@@ -128,7 +128,7 @@ AddToFunc RunOrRaise
 
 DestroyFunc RunOrRaiseEmacs
 AddToFunc RunOrRaiseEmacs
-+ I RunOrRaise "*Emacs*" "emacs --maximized"
++ I RunOrRaise "*Emacs*" emacs
 
 DestroyFunc RunOrRaiseFirefox
 AddToFunc RunOrRaiseFirefox
