@@ -225,7 +225,7 @@ FocusStyle * GrabFocus, GrabFocusTransient
 # Many windows use this incorrectly and expect keyboard focus anyways.
 # This styles tells fvwm to ignore this property, which makes some
 # applications (such as java and electron apps) behave better.
-FocusStyle * FPLenient
+FocusStyle * Lenient
 
 # Default Font
 DefaultFont "xft:Sans:Bold:size=8:antialias=True"
