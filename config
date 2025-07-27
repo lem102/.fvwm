@@ -227,6 +227,7 @@ Style * SloppyFocus
 
 # Raise the focused window when clicked.
 FocusStyle * ClickRaisesFocused, ClickDecorRaisesFocused, ClickIconRaisesFocused
+FocusStyle * ClickRaisesUnfocused, ClickDecorRaisesUnfocused, ClickIconRaisesUnfocused
 
 # Grab the focus of a newly created window.
 FocusStyle * GrabFocus, GrabFocusTransient
