@@ -78,7 +78,7 @@ DestroyFunc StartFunction
 AddToFunc   StartFunction
 + I Module FvwmButtons RightPanel
 + I Module FvwmEvent EventNewDesk
-+ I Module FvwmEvent EventMouseEntersWindow
++ I Module FvwmAuto 1
 + I Test (Init) Exec exec picom --config $[FVWM_USERDIR]/picom.conf
 + I Test (Init) Exec exec nm-applet
 + I Test (Init) Exec exec cbatticon
@@ -659,6 +659,3 @@ DestroyModuleConfig FvwmIconMan:*
 *FvwmIconMan: Resolution global
 *FvwmIconMan: Tips needed
 *FvwmIconMan: Sort id
-
-DestroyModuleConfig EventMouseEntersWindow:*
-*EventMouseEntersWindow: focus_change Raise
