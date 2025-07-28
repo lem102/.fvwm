@@ -78,7 +78,7 @@ DestroyFunc StartFunction
 AddToFunc   StartFunction
 + I Module FvwmButtons RightPanel
 + I Module FvwmEvent EventNewDesk
-+ I Module FvwmAuto 1
++ I Module FvwmAuto 1000
 + I Test (Init) Exec exec picom --config $[FVWM_USERDIR]/picom.conf
 + I Test (Init) Exec exec nm-applet
 + I Test (Init) Exec exec cbatticon
