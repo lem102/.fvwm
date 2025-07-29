@@ -172,6 +172,14 @@ AddToFunc   ToggleTitle
 + I ThisWindow (HasTitle) WindowStyle !Title
 + I TestRc (NoMatch) WindowStyle Title
 
+DestroyFunc BrightnessUp
+AddToFunc   BrightnessUp
++ I Exec exec brightnessctl set +10%
+
+DestroyFunc BrightnessDown
+AddToFunc   BrightnessDown
++ I Exec exec brightnessctl set 10%-
+
 #############
 # 2: Styles #
 #############
@@ -541,6 +549,9 @@ Test (x slack)      Key 3 A 4 RunOrRaiseSlack
 
 Key Print A N Screenshot
 Key Print A M Record
+
+Key XF86MonBrightnessUp A A BrightnessUp
+Key XF86MonBrightnessDown A A BrightnessDown
 
 #######
 # 6: Window Decor
