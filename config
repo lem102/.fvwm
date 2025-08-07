@@ -37,6 +37,10 @@ InfoStoreAdd terminal x-terminal-emulator
 InfoStoreAdd runcmd "dmenu_run"
 InfoStoreAdd runcmdopt "-nb '#2b4e5e'"
 
+InfoStoreAdd backgroundColour #380d0a
+InfoStoreAdd foregroundColour #AB9518
+InfoStoreAdd hilightColour #57110f
+
 # DesktopConfiguration sets how fvwm handles desktops:
 #
 # * global -- the default. This means all screens show the same desktops/pages.
@@ -124,7 +128,7 @@ AddToFunc MoveWindowRightSide
 # RunOrRaise(windowTitleRegex, commandLine)
 DestroyFunc RunOrRaise
 AddToFunc RunOrRaise
-+ I Next ("$0") SelectWindow True
++ I Next (CurrentDesk, "$0") SelectWindow True
 + I None ("$0") Exec exec $1
 
 DestroyFunc RunOrRaiseEmacs
@@ -201,11 +205,10 @@ AddToFunc   BrightnessDown
 #   +---+---+
 #
 DesktopSize 3x3
-DesktopName 0 Communication Ⅰ
-DesktopName 1 Communication Ⅱ
-DesktopName 2 Configuration
-DesktopName 3 Project Ⅰ
-DesktopName 4 Project Ⅱ
+DesktopName 0 Communication
+DesktopName 1 Configuration
+DesktopName 2 Project Ⅰ
+DesktopName 3 Project Ⅱ
 
 # EdgeScroll will move the view port between the Pages when the mouse
 # moves to the edge of the screen. This set the amount of distance to
@@ -278,7 +281,7 @@ Style * HilightBorderColorset 4 8 4 8 4 8 4 8
 
 # Window Specific Styles
 Style RightPanel !Title, !Borders, !Handles, Sticky, \
-                 WindowListSkip, NeverFocus
+                 WindowListSkip, NeverFocus, StaysOnTop
 Style FvwmPager !Title, !Borders, !Handles, Sticky, \
                  WindowListSkip, NeverFocus, StaysOnTop
 Style ConfirmQuit !Title, PositionPlacement Center, WindowListSkip, Layer 6
@@ -310,20 +313,20 @@ Style FvwmIdent WindowListSkip
 #      14 - FvwmIconMan Iconified Button
 ###########
 # Art-Deco theme (Blue)
-Colorset 0  fg #AB9518, bg #521D1D, hi, sh, Plain, NoShape
+Colorset 0  fg $[infostore.foregroundColour], bg $[infostore.backgroundColour], hi, sh, Plain, NoShape
 Colorset 1  fg #000000, bg #88b2b1, hi, sh, Plain, NoShape
-Colorset 2  fg #AB9518, bg #521D1D, hi, sh, Plain, NoShape
+Colorset 2  fg $[infostore.foregroundColour], bg $[infostore.backgroundColour], hi, sh, Plain, NoShape
 Colorset 3  fg black, bg #415554, hi, sh, Plain, NoShape
 Colorset 4  fg black, bg #3F1616, hi #613131, sh #511c1c, Plain, NoShape
 Colorset 5  fg #000000, bg #cbdcca, hi, sh, Plain, NoShape
-Colorset 6  fg #AB9518, bg #88b2b1, hi, sh, Plain, NoShape
+Colorset 6  fg $[infostore.foregroundColour], bg #88b2b1, hi, sh, Plain, NoShape
 Colorset 7  fg #999999, bg #cbdcca, hi, sh, Plain, NoShape
-Colorset 8  fg #AB9518, bg #521D1D, hi, sh, Plain, NoShape
-Colorset 10 fg #AB9518, bg #521D1D, hi #AB9518, sh #AB9518, Plain, NoShape
-Colorset 11 fg #AB9518, bg #913333, hi #AB9518, sh #AB9518, Plain, NoShape
-Colorset 12 fg #2d2d2d, bg #AB9518, hi, sh, Plain, NoShape
-Colorset 13 fg #AB9518, bg #913333, hi, sh, Plain, NoShape
-Colorset 14 fg #a8988f, bg #521D1D, hi #aaaaaa, sh #999999, Plain, NoShape
+Colorset 8  fg $[infostore.foregroundColour], bg $[infostore.backgroundColour], hi, sh, Plain, NoShape
+Colorset 10 fg $[infostore.foregroundColour], bg $[infostore.backgroundColour], hi $[infostore.foregroundColour], sh $[infostore.foregroundColour], Plain, NoShape
+Colorset 11 fg $[infostore.foregroundColour], bg $[infostore.hilightColour], hi $[infostore.foregroundColour], sh $[infostore.foregroundColour], Plain, NoShape
+Colorset 12 fg #2d2d2d, bg $[infostore.foregroundColour], hi, sh, Plain, NoShape
+Colorset 13 fg $[infostore.foregroundColour], bg $[infostore.hilightColour], hi, sh, Plain, NoShape
+Colorset 14 fg #a8988f, bg $[infostore.backgroundColour], hi #aaaaaa, sh #999999, Plain, NoShape
 
 #######
 # 4: Menus
