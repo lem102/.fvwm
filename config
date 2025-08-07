@@ -37,10 +37,6 @@ InfoStoreAdd terminal x-terminal-emulator
 InfoStoreAdd runcmd "dmenu_run"
 InfoStoreAdd runcmdopt "-nb '#2b4e5e'"
 
-InfoStoreAdd backgroundColour #380d0a
-InfoStoreAdd foregroundColour #AB9518
-InfoStoreAdd hilightColour #57110f
-
 # DesktopConfiguration sets how fvwm handles desktops:
 #
 # * global -- the default. This means all screens show the same desktops/pages.
@@ -80,7 +76,7 @@ DesktopConfiguration global
 # actions that are run after a restart.
 DestroyFunc StartFunction
 AddToFunc   StartFunction
-+ I Module FvwmButtons RightPanel
++ I Module FvwmButtons StatusBar
 + I Module FvwmEvent EventNewDesk
 + I Module FvwmAuto 1000
 + I Test (Init) Exec exec picom --config $[FVWM_USERDIR]/picom.conf
@@ -280,8 +276,8 @@ Style * BorderColorset 3 4 3 4 3 4 3 4
 Style * HilightBorderColorset 4 8 4 8 4 8 4 8
 
 # Window Specific Styles
-Style RightPanel !Title, !Borders, !Handles, Sticky, \
-                 WindowListSkip, NeverFocus, StaysOnTop
+Style StatusBar !Title, !Borders, !Handles, Sticky, \
+                 WindowListSkip, NeverFocus
 Style FvwmPager !Title, !Borders, !Handles, Sticky, \
                  WindowListSkip, NeverFocus, StaysOnTop
 Style ConfirmQuit !Title, PositionPlacement Center, WindowListSkip, Layer 6
@@ -313,20 +309,20 @@ Style FvwmIdent WindowListSkip
 #      14 - FvwmIconMan Iconified Button
 ###########
 # Art-Deco theme (Blue)
-Colorset 0  fg $[infostore.foregroundColour], bg $[infostore.backgroundColour], hi, sh, Plain, NoShape
+Colorset 0  fg #ffffff, bg #2b4e5e, hi, sh, Plain, NoShape
 Colorset 1  fg #000000, bg #88b2b1, hi, sh, Plain, NoShape
-Colorset 2  fg $[infostore.foregroundColour], bg $[infostore.backgroundColour], hi, sh, Plain, NoShape
+Colorset 2  fg #ffffff, bg #2b4e5e, hi, sh, Plain, NoShape
 Colorset 3  fg black, bg #415554, hi, sh, Plain, NoShape
-Colorset 4  fg black, bg #3F1616, hi #613131, sh #511c1c, Plain, NoShape
+Colorset 4  fg black, bg #14252c, hi #24424f, sh #111f26, Plain, NoShape
 Colorset 5  fg #000000, bg #cbdcca, hi, sh, Plain, NoShape
-Colorset 6  fg $[infostore.foregroundColour], bg #88b2b1, hi, sh, Plain, NoShape
+Colorset 6  fg #ffffff, bg #88b2b1, hi, sh, Plain, NoShape
 Colorset 7  fg #999999, bg #cbdcca, hi, sh, Plain, NoShape
-Colorset 8  fg $[infostore.foregroundColour], bg $[infostore.backgroundColour], hi, sh, Plain, NoShape
-Colorset 10 fg $[infostore.foregroundColour], bg $[infostore.backgroundColour], hi $[infostore.foregroundColour], sh $[infostore.foregroundColour], Plain, NoShape
-Colorset 11 fg $[infostore.foregroundColour], bg $[infostore.hilightColour], hi $[infostore.foregroundColour], sh $[infostore.foregroundColour], Plain, NoShape
-Colorset 12 fg #2d2d2d, bg $[infostore.foregroundColour], hi, sh, Plain, NoShape
-Colorset 13 fg $[infostore.foregroundColour], bg $[infostore.hilightColour], hi, sh, Plain, NoShape
-Colorset 14 fg #a8988f, bg $[infostore.backgroundColour], hi #aaaaaa, sh #999999, Plain, NoShape
+Colorset 8  fg #ffffff, bg #2b4e5e, hi, sh, Plain, NoShape
+Colorset 10 fg #ffffff, bg #2b4e5e, hi #aaaaaa, sh #999999, Plain, NoShape
+Colorset 11 fg #ffffff, bg #1a6e99, hi #ffffff, sh #ffffff, Plain, NoShape
+Colorset 12 fg #2d2d2d, bg #ffffff, hi, sh, Plain, NoShape
+Colorset 13 fg #ffffff, bg #006c6c, hi, sh, Plain, NoShape
+Colorset 14 fg #a8988f, bg #2b4e5e, hi #aaaaaa, sh #999999, Plain, NoShape
 
 #######
 # 4: Menus
@@ -624,32 +620,32 @@ DestroyModuleConfig FvwmIdent:*
 # FvwmScript is a module that allows one to write custom desktop
 # widgets and various other tools. This config uses two FvwmScripts.
 #   - DateTime - uses the output of "date" to display the date/time
-#     on the RightPanel.
+#     on the StatusBar.
 #   - Quit - This is a popup that asks for quit confirmation before
 #     quitting fvwm.
 DestroyModuleConfig FvwmScript:*
 *FvwmScript: DefaultColorset 10
 
-# FvwmButtons - RightPanel
+# FvwmButtons - StatusBar
 #
 # FvwmButtons is a powerful module that can be used to build custom
-# panels and docks. This config uses FvwmButtons to build the RightPanel.
+# panels and docks. This config uses FvwmButtons to build the StatusBar.
 # The panel contains buttons to switch desks, FvwmPager, a system tray,
 # FvwmIconMan (list of running windows), and a clock.
 #
 # Note - To use the system tray you must have "stalonetray" installed.
-DestroyModuleConfig RightPanel:*
-*RightPanel: Geometry 1920x135-0-0@p
-*RightPanel: Colorset 10
-*RightPanel: Rows 2
-*RightPanel: Columns 19
-*RightPanel: Frame 0
-*RightPanel: Font "xft:Sans:Bold:size=10:antialias=True"
-*RightPanel: (1x2, Title "Menu", Action Menu MenuFvwmRoot, Frame 1)
-*RightPanel: (8x2, Top, Swallow FvwmPager 'Module FvwmPager 0 4', Frame 0)
-*RightPanel: (9x2, Top, Swallow FvwmIconMan 'Module FvwmIconMan', Frame 0)
-*RightPanel: (1x1, Swallow(NoClose,UseOld) stalonetray 'Exec exec stalonetray --config "$[FVWM_USERDIR]/stalonetrayrc"', Frame 0, Colorset 13)
-*RightPanel: (1x1, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime', Frame 0)
+DestroyModuleConfig StatusBar:*
+*StatusBar: Geometry 1920x135-0-0@p
+*StatusBar: Colorset 10
+*StatusBar: Rows 2
+*StatusBar: Columns 19
+*StatusBar: Frame 0
+*StatusBar: Font "xft:Sans:Bold:size=10:antialias=True"
+*StatusBar: (1x2, Title "Menu", Action Menu MenuFvwmRoot, Frame 1)
+*StatusBar: (8x2, Top, Swallow FvwmPager 'Module FvwmPager 0 3', Frame 0)
+*StatusBar: (9x2, Top, Swallow FvwmIconMan 'Module FvwmIconMan', Frame 0)
+*StatusBar: (1x1, Swallow(NoClose,UseOld) stalonetray 'Exec exec stalonetray --config "$[FVWM_USERDIR]/stalonetrayrc"', Frame 0, Colorset 10)
+*StatusBar: (1x1, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime', Frame 0)
 
 # FvwmPager
 #
@@ -667,7 +663,9 @@ DestroyModuleConfig FvwmPager:*
 *FvwmPager: BallonYOffset +2
 *FvwmPager: Window3dBorders
 *FvwmPager: MiniIcons
-
+*FvwmPager: Mouse 1 ChangePage
+*FvwmPager: Mouse 2 Nop
+*FvwmPager: Mouse 3 MoveWindow FlipFocus NoWarp
 # FvwmIconMan
 #
 # FvwmIconMan is a powerful tool to list and manage windows. This
