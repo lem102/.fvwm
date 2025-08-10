@@ -1,0 +1,6 @@
+AddToFunc   StartFunction
++ I Module FvwmEvent MaximizeAll
+
+DestroyModuleConfig MaximizeAll:*
+*MaximizeAll: Cmd
+*MaximizeAll: add_window "ThisWindow (!StatusBar) Maximize"
