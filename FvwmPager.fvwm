@@ -8,9 +8,9 @@ DestroyModuleConfig FvwmPager:*
 *FvwmPager: BalloonColorset * 10
 *FvwmPager: WindowColorset 10
 *FvwmPager: FocusColorset 11
-*FvwmPager: Font "xft:Sans:Default:size=10:antialias=True"
+*FvwmPager: Font "$[infostore.bigFont]"
 *FvwmPager: Balloons All
-*FvwmPager: BalloonFont "xft:Sans:Default:size=8:antialias=True"
+*FvwmPager: BalloonFont "$[infostore.font]"
 *FvwmPager: BallonYOffset +2
 *FvwmPager: Window3dBorders
 *FvwmPager: MiniIcons

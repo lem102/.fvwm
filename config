@@ -37,6 +37,9 @@ InfoStoreAdd terminal x-terminal-emulator
 InfoStoreAdd runcmd "dmenu_run"
 InfoStoreAdd runcmdopt "-nb '#2b4e5e'"
 
+InfoStoreAdd font "xft:DejaVu Sans:regular:size=8:antialias=True"
+InfoStoreAdd bigFont "xft:DejaVu Sans:regular:size=10:antialias=True"
+
 # DesktopConfiguration sets how fvwm handles desktops:
 #
 # * global -- the default. This means all screens show the same desktops/pages.
@@ -244,8 +247,7 @@ FocusStyle * Lenient
 # When creating new windows, try to prevent overlapping where possible.
 Style * MinOverlapPercentPlacement
 
-# Default Font
-DefaultFont "xft:Sans:Bold:size=8:antialias=True"
+DefaultFont "$[infostore.font]"
 
 # Show the contents of the window whilst resizing instead of
 # displaying a transparent grid.
@@ -286,7 +288,7 @@ MenuStyle * MenuColorset 5, ActiveColorset 6, GreyedColorset 7, TitleColorset 8
 MenuStyle * Hilight3DOff, HilightBack, HilightTitleBack, SeparatorsLong
 MenuStyle * TrianglesSolid, TrianglesUseFore
 MenuStyle * ItemFormat "%s%|%3.1i%5.3l%5l%5r%5.3>%|"
-MenuStyle * Font "xft:Sans:Bold:size=18:antialias=True"
+MenuStyle * Font "$[infostore.font]"
 
 # Root Menu
 #
@@ -568,7 +570,7 @@ ButtonStyle 6 - MwmDecorMin
 # a window. One use is getting the class/resource/name of a window.
 DestroyModuleConfig FvwmIdent:*
 *FvwmIdent: Colorset 10
-*FvwmIdent: Font "xft:Sans:size=10:antialias=True"
+*FvwmIdent: Font "$[infostore.bigFont]"
 
 # FvwmScript
 #

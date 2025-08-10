@@ -10,7 +10,7 @@ DestroyModuleConfig FvwmButtons:*
 *FvwmButtons: Rows 2
 *FvwmButtons: Columns 19
 *FvwmButtons: Frame 5
-*FvwmButtons: Font "xft:Sans:Bold:size=10:antialias=True"
+*FvwmButtons: Font "$[infostore.bigFont]"
 
 *FvwmButtons: (1x2, \
               Title "Menu", \

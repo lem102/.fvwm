@@ -1,7 +1,7 @@
 UseGettext
 WindowTitle {ConfirmQuit}
 WindowSize  300 80
-Font "xft:Sans:style=Bold:size=10"
+Font "xft:DejaVu Sans:regular:size=10:antialias=True"
 Init
  Begin
  End
