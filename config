@@ -279,6 +279,10 @@ Style * HilightBorderColorset 4 8 4 8 4 8 4 8
 Style ConfirmQuit !Title, PositionPlacement Center, WindowListSkip, Layer 6
 Style FvwmIdent WindowListSkip
 
+#######
+# 3: Colorsets
+###########
+
 Read $./Colorsets.fvwm
 
 #######
