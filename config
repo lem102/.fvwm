@@ -84,9 +84,6 @@ AddToFunc   StartFunction
 + I Test (Init) Exec exec blueman-applet
 + I Test (Init) Exec exec feh --bg-scale $[FVWM_USERDIR]/images/wallpaper.jpg
 
-Read $./MaximizeAll.fvwm
-Read $./StatusBar.fvwm
-
 # Mouse Bindings Functions
 DestroyFunc RaiseMoveX
 AddToFunc RaiseMoveX
@@ -277,8 +274,6 @@ Style * BorderColorset 3 4 3 4 3 4 3 4
 Style * HilightBorderColorset 4 8 4 8 4 8 4 8
 
 # Window Specific Styles
-Style FvwmPager !Title, !Borders, !Handles, Sticky, \
-                 WindowListSkip, NeverFocus, StaysOnTop
 Style ConfirmQuit !Title, PositionPlacement Center, WindowListSkip, Layer 6
 Style FvwmIdent WindowListSkip
 
@@ -625,48 +620,7 @@ DestroyModuleConfig FvwmIdent:*
 DestroyModuleConfig FvwmScript:*
 *FvwmScript: DefaultColorset 10
 
-# FvwmPager
-#
-# This module displays the location of the windows on the various Pages
-# and Desks. This is setup to show only the Pages on the current Desk.
-DestroyModuleConfig FvwmPager:*
-*FvwmPager: Geometry 0x0+0+0
-*FvwmPager: Colorset * 10
-*FvwmPager: HilightColorset * 13
-*FvwmPager: BalloonColorset * 10
-*FvwmPager: WindowColorsets 10 11
-*FvwmPager: Font "xft:Sans:Default:size=10:antialias=True"
-*FvwmPager: Balloons All
-*FvwmPager: BalloonFont "xft:Sans:Default:size=8:antialias=True"
-*FvwmPager: BallonYOffset +2
-*FvwmPager: Window3dBorders
-*FvwmPager: MiniIcons
-*FvwmPager: Mouse 1 ChangePage
-*FvwmPager: Mouse 2 Nop
-*FvwmPager: Mouse 3 MoveWindow FlipFocus NoWarp
-
-# FvwmIconMan
-#
-# FvwmIconMan is a powerful tool to list and manage windows. This
-# is used as the window list in the panel or taskbar.
-DestroyModuleConfig FvwmIconMan:*
-*FvwmIconMan: UseWinList true
-*FvwmIconMan: ButtonGeometry 120x20
-*FvwmIconMan: ManagerGeometry 1x1
-*FvwmIconMan: Colorset 10
-*FvwmIconMan: FocusColorset 11
-*FvwmIconMan: IconColorset 14
-*FvwmIconMan: FocusAndSelectColorset 12
-*FvwmIconMan: SelectColorset 12
-*FvwmIconMan: IconAndSelectColorset 12
-*FvwmIconMan: DrawIcons always
-*FvwmIconMan: ReliefThickness 0
-*FvwmIconMan: Format "%t"
-*FvwmIconMan: Font "xft:Sans:Bold:size=8:antialias=True"
-*FvwmIconMan: Action Mouse 0 A ret
-*FvwmIconMan: Action Mouse 1 A sendcommand "SelectWindow False"
-*FvwmIconMan: Action Mouse 3 A sendcommand "Menu MenuIconOps"
-*FvwmIconMan: Resolution global
-*FvwmIconMan: Tips needed
-*FvwmIconMan: Sort id
-
+Read $./MaximizeAll.fvwm
+Read $./FvwmButtons.fvwm
+Read $./FvwmPager.fvwm
+Read $./FvwmIconMan.fvwm

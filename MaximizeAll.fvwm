@@ -3,4 +3,4 @@ AddToFunc   StartFunction
 
 DestroyModuleConfig MaximizeAll:*
 *MaximizeAll: Cmd
-*MaximizeAll: add_window "ThisWindow (!StatusBar) Maximize"
+*MaximizeAll: add_window "ThisWindow (!FvwmButtons) Maximize"

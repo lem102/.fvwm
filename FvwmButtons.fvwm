@@ -1,0 +1,33 @@
+AddToFunc StartFunction
++ I Module FvwmButtons
+
+Style FvwmButtons !Title, !Borders, !Handles, Sticky, \
+                  WindowListSkip, NeverFocus
+
+DestroyModuleConfig FvwmButtons:*
+*FvwmButtons: Geometry 1920x135-0-0@p
+*FvwmButtons: Colorset 10
+*FvwmButtons: Rows 2
+*FvwmButtons: Columns 19
+*FvwmButtons: Frame 5
+*FvwmButtons: Font "xft:Sans:Bold:size=10:antialias=True"
+
+*FvwmButtons: (1x2, \
+              Title "Menu", \
+              Action Menu MenuFvwmRoot)
+
+*FvwmButtons: (8x2, \
+              Swallow FvwmPager 'Module FvwmPager 0 3')
+
+*FvwmButtons: (8x2, \
+              Swallow FvwmIconMan 'Module FvwmIconMan')
+
+*FvwmButtons: (2x1, \
+              Swallow(NoClose,UseOld) stalonetray 'Exec exec stalonetray --config "$[FVWM_USERDIR]/stalonetrayrc"', \
+              Colorset 10)
+            
+*FvwmButtons: (2x1, \
+              Top, \
+              Swallow DateTime 'Module FvwmScript FvwmScript-DateTime')
+
+
