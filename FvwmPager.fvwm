@@ -6,13 +6,15 @@ DestroyModuleConfig FvwmPager:*
 *FvwmPager: Colorset * 10
 *FvwmPager: HilightColorset * 13
 *FvwmPager: BalloonColorset * 10
-*FvwmPager: WindowColorsets 10 11
+*FvwmPager: WindowColorset 10
+*FvwmPager: FocusColorset 11
 *FvwmPager: Font "xft:Sans:Default:size=10:antialias=True"
 *FvwmPager: Balloons All
 *FvwmPager: BalloonFont "xft:Sans:Default:size=8:antialias=True"
 *FvwmPager: BallonYOffset +2
 *FvwmPager: Window3dBorders
 *FvwmPager: MiniIcons
+*FvwmPager: WindowBorderWidth 2
 *FvwmPager: Mouse 1 ChangePage
 *FvwmPager: Mouse 2 Nop
 *FvwmPager: Mouse 3 MoveWindow FlipFocus NoWarp
