@@ -27,7 +27,6 @@ DestroyModuleConfig FvwmButtons:*
               Colorset 10)
             
 *FvwmButtons: (2x1, \
-              Top, \
               Swallow DateTime 'Module FvwmScript FvwmScript-DateTime')
 
 
