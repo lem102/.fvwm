@@ -151,7 +151,7 @@ AddToFunc RunOrRaiseTerminal
 
 DestroyFunc Screenshot
 AddToFunc Screenshot
-+ I Exec exec "$[FVWM_USERDIR]/screenshot.sh"
++ I Exec exec "$[FVWM_USERDIR]/screenshot"
 
 DestroyFunc Record
 AddToFunc Record

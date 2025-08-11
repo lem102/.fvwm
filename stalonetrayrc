@@ -1,8 +1,8 @@
 decorations none
-geometry 3x2
+geometry 8x1
 icon_size 24
 kludges force_icons_size
-max_geometry 6x1
+max_geometry 8x1
 parent_bg true
 transparent false
 icon_gravity NW
