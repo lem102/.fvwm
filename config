@@ -201,11 +201,19 @@ AddToFunc   BrightnessDown
 #   |   |   |
 #   +---+---+
 #
-DesktopSize 3x3
-DesktopName 0 Communication
-DesktopName 1 Configuration
-DesktopName 2 Project Ⅰ
-DesktopName 3 Project Ⅱ
+DesktopSize 2x2
+DesktopName 0 Ⅰ
+DesktopName 1 Ⅱ
+DesktopName 2 Ⅲ
+DesktopName 3 Ⅳ
+DesktopName 4 Ⅴ
+DesktopName 5 Ⅵ
+DesktopName 6 Ⅶ
+DesktopName 7 Ⅷ
+DesktopName 8 Ⅸ
+DesktopName 9 Ⅹ
+DesktopName 10 Ⅺ
+DesktopName 11 Ⅻ
 
 # EdgeScroll will move the view port between the Pages when the mouse
 # moves to the edge of the screen. This set the amount of distance to

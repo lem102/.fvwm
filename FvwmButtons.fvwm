@@ -17,7 +17,7 @@ DestroyModuleConfig FvwmButtons:*
               Action Menu MenuFvwmRoot)
 
 *FvwmButtons: (8x2, \
-              Swallow FvwmPager 'Module FvwmPager 0 3')
+              Swallow FvwmPager 'Module FvwmPager 0 5')
 
 *FvwmButtons: (8x2, \
               Swallow FvwmIconMan 'Module FvwmIconMan')
