@@ -6,7 +6,6 @@ Style FvwmButtons !Title, !Borders, !Handles, Sticky, \
 
 DestroyModuleConfig FvwmButtons:*
 *FvwmButtons: Geometry 1920x135-0-0@p
-*FvwmButtons: Colorset 10
 *FvwmButtons: Rows 2
 *FvwmButtons: Columns 19
 *FvwmButtons: Frame 5
@@ -23,9 +22,8 @@ DestroyModuleConfig FvwmButtons:*
               Swallow FvwmIconMan 'Module FvwmIconMan')
 
 *FvwmButtons: (2x1, \
-              Swallow(NoClose,UseOld) stalonetray 'Exec exec stalonetray --config "$[FVWM_USERDIR]/stalonetrayrc"', \
-              Colorset 10)
-            
+              Swallow(NoClose, UseOld) stalonetray 'Exec exec stalonetray --config "$[FVWM_USERDIR]/stalonetrayrc"')
+
 *FvwmButtons: (2x1, \
               Swallow DateTime 'Module FvwmScript FvwmScript-DateTime')
 

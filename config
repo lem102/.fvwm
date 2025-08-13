@@ -274,14 +274,6 @@ IgnoreModifiers L25
 
 # Decor Styles
 Style * BorderWidth 5, HandleWidth 5, MWMButtons, FvwmBorder, FirmBorder
-Style * Colorset 1, HilightColorset 2
-
-# BorderColorset and HilightBorderColorset take 8 positive colorsets
-# to specify the colorset for each edge and handle (corner). The order is:
-#   North NorthEast East SouthEast South SouthWest West NorthWest
-# This makes the edges and corners (handles) different colors.
-Style * BorderColorset 3 4 3 4 3 4 3 4
-Style * HilightBorderColorset 4 8 4 8 4 8 4 8
 
 # Window Specific Styles
 Style ConfirmQuit !Title, PositionPlacement Center, WindowListSkip, Layer 6
@@ -291,12 +283,9 @@ Style FvwmIdent WindowListSkip
 # 3: Colorsets
 ###########
 
-Read $./Colorsets.fvwm
-
 #######
 # 4: Menus
 ###########
-MenuStyle * MenuColorset 5, ActiveColorset 6, GreyedColorset 7, TitleColorset 8
 MenuStyle * Hilight3DOff, HilightBack, HilightTitleBack, SeparatorsLong
 MenuStyle * TrianglesSolid, TrianglesUseFore
 MenuStyle * ItemFormat "%s%|%3.1i%5.3l%5l%5r%5.3>%|"
@@ -581,7 +570,6 @@ ButtonStyle 6 - MwmDecorMin
 # FvwmIdent is a module that can be used to get the various info about
 # a window. One use is getting the class/resource/name of a window.
 DestroyModuleConfig FvwmIdent:*
-*FvwmIdent: Colorset 10
 *FvwmIdent: Font "$[infostore.bigFont]"
 
 # FvwmScript
@@ -593,7 +581,6 @@ DestroyModuleConfig FvwmIdent:*
 #   - Quit - This is a popup that asks for quit confirmation before
 #     quitting fvwm.
 DestroyModuleConfig FvwmScript:*
-*FvwmScript: DefaultColorset 10
 
 Read $./MaximizeAll.fvwm
 Read $./FvwmButtons.fvwm

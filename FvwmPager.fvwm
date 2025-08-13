@@ -3,11 +3,6 @@ Style FvwmPager !Title, !Borders, !Handles, Sticky, \
 
 DestroyModuleConfig FvwmPager:*
 *FvwmPager: Geometry 0x0+0+0
-*FvwmPager: Colorset * 10
-*FvwmPager: HilightColorset * 13
-*FvwmPager: BalloonColorset * 10
-*FvwmPager: WindowColorset 10
-*FvwmPager: FocusColorset 11
 *FvwmPager: Font "$[infostore.bigFont]"
 *FvwmPager: Balloons All
 *FvwmPager: BalloonFont "$[infostore.font]"
