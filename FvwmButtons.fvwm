@@ -16,11 +16,14 @@ DestroyModuleConfig FvwmButtons:*
               Title "Menu", \
               Action Menu MenuFvwmRoot)
 
-*FvwmButtons: (8x2, \
-              Swallow FvwmPager 'Module FvwmPager 0 5')
+# *FvwmButtons: (8x2, \
+              # Swallow FvwmPager 'Module FvwmPager 0 5')
 
-*FvwmButtons: (8x2, \
-              Swallow FvwmIconMan 'Module FvwmIconMan')
+*FvwmButtons: (16x2, \
+              Swallow FvwmPager 'Module FvwmPager 0 11')
+
+# *FvwmButtons: (8x2, \
+              # Swallow FvwmIconMan 'Module FvwmIconMan')
 
 *FvwmButtons: (2x1, \
               Swallow(NoClose,UseOld) stalonetray 'Exec exec stalonetray --config "$[FVWM_USERDIR]/stalonetrayrc"', \
