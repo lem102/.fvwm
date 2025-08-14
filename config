@@ -11,7 +11,7 @@ AddToFunc WindowListFunc
 DestroyFunc LeftClickTitleBehaviour
 AddToFunc LeftClickTitleBehaviour
 + M Move
-+ D Maximize
++ C Maximize
 
 DestroyFunc Screenshot
 AddToFunc Screenshot
@@ -33,7 +33,7 @@ DestroyFunc RofiMouse
 AddToFunc RofiMouse
 + I Exec exec rofi -config $[FVWM_USERDIR]/config.rasi -show combi -hover-select -me-select-entry '' -me-accept-entry MousePrimary
 
-Style * ClickToFocus
+Style * ClickToFocus, MinOverlapPercentPlacement
 
 Style DateTime Sticky, NeverFocus, StaysOnTop, WindowListSkip, !Button 2, !Iconifiable
 Style stalonetray Sticky, NeverFocus, !Button 2
