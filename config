@@ -1,12 +1,15 @@
 DestroyFunc StartFunction
 AddToFunc StartFunction
-+ I Module FvwmScript FvwmScript-DateTime
++ I Module FvwmButtons
++ I Module FvwmEvent
+
+DefaultFont "xft:DejaVu Sans:bold:size=8:antialias=True"
 
 DestroyFunc WindowListFunc
 AddToFunc WindowListFunc
 + I FlipFocus
 + I Raise
-+ I Iconify off
++ I Iconify "off"
 
 DestroyFunc LeftClickTitleBehaviour
 AddToFunc LeftClickTitleBehaviour
@@ -22,8 +25,17 @@ AddToFunc Record
 + I Exec exec simplescreenrecorder
 
 AddToMenu MainMenu
-+ "Restart Fvwm" Restart
-+ "Logout" Module FvwmScript FvwmScript-ConfirmQuit
++ "Restart Fvwm (&r)" Restart
++ "Rofi (&x)" RofiKeyboard
++ "Maximise (&m)" ThisWindow Maximize
++ "Rearrange (&a)" Rearrange
++ "System (&u)" Popup SystemMenu
+
+AddToMenu SystemMenu
++ "Restart (&r)" Exec exec systemctl reboot
++ "Shut Down (&u)" Exec exec systemctl suspend
++ "Sleep (&s)" Exec exec systemctl suspend
++ "Logout (&l)" Exec exec loginctl kill-user `whoami`
 
 DestroyFunc RofiKeyboard
 AddToFunc RofiKeyboard
@@ -33,20 +45,44 @@ DestroyFunc RofiMouse
 AddToFunc RofiMouse
 + I Exec exec rofi -config $[FVWM_USERDIR]/config.rasi -show combi -hover-select -me-select-entry '' -me-accept-entry MousePrimary
 
-Style * ClickToFocus, MinOverlapPercentPlacement, ClickToFocusPassesClickOff
+DestroyFunc MaximizeAndRaise
+AddToFunc MaximizeAndRaise
++ I Maximize
++ I Raise
 
-Style DateTime Sticky, NeverFocus, StaysOnTop, WindowListSkip, !Button 2, !Iconifiable
-Style stalonetray Sticky, NeverFocus, !Button 2
+DestroyFunc Rearrange
+AddToFunc Rearrange
++ I FvwmRearrange -cascade -incx 2 -incy 4
++ I Schedule 1000 ThisWindow Raise
+
+FocusStyle * SortWindowListByFocus
+Style * ClickToFocus, ClickToFocusPassesClickOff
+
+AddButtonStyle 2 Vector 4 35x35@3 65x65@3 35x65@4 65x35@3
+
+Style FvwmButtons !Title, !Borders, !Handles, Sticky, NeverFocus
 
 Mouse 1 2 A Close
 Mouse 1 T A LeftClickTitleBehaviour
-Mouse 3 T A Iconify
 Mouse 1 R A RofiMouse
 Mouse 3 R A Menu MainMenu
-Mouse 1 I A Iconify
 
 Key Print A N Screenshot
 Key Print A M Record
-Key Super_L A A RofiKeyboard
-Key Tab A M WindowList Root c c NoDeskSort, SelectOnRelease Meta_L, CurrentAtEnd
+Key Tab A M WindowList Root c c NoDeskSort, SelectOnRelease Meta_L, CurrentAtEnd, NoGeometry
 
+Key Super_L A A Menu MainMenu
+
+DestroyModuleConfig FvwmButtons:*
+*FvwmButtons: Geometry 220x60-0
+*FvwmButtons: Columns 2
+
+*FvwmButtons: (1x1, \
+              Swallow DateTime 'Module FvwmScript FvwmScript-DateTime')
+
+*FvwmButtons: (1x1, \
+              Swallow(NoClose,UseOld) stalonetray)
+
+DestroyModuleConfig FvwmEvent:*
+*FvwmEvent: Cmd
+*FvwmEvent: add_window Rearrange

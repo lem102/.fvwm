@@ -1,5 +1,5 @@
 WindowTitle {DateTime}
-WindowSize  120 35
+WindowSize  75 40
 Font "xft:DejaVu Sans:regular:size=10:antialias=True" 
 
 Init
@@ -26,7 +26,7 @@ End
 Widget 1
 Property
  Position 0 0
- Size 120 20
+ Size 75 20
  Font "xft:DejaVu Sans:regular:size=11:antialias=True"
  Type ItemDraw
  Flags NoReliefString
@@ -41,7 +41,7 @@ End
 Widget 2
 Property
  Position 0 20
- Size 120 15
+ Size 75 15
  Font "xft:DejaVu Sans:regular:size=8:antialias=True"
  Type ItemDraw
  Flags NoReliefString
