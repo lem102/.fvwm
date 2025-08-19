@@ -60,6 +60,8 @@ Style * ClickToFocus, ClickToFocusPassesClickOff
 AddButtonStyle 2 Vector 4 35x35@3 65x65@3 35x65@4 65x35@3
 
 Style FvwmButtons !Title, !Borders, !Handles, Sticky, NeverFocus
+Style firefox-esr !Title
+Style "WhatsApp Web" !Title
 
 Mouse 1 2 A Close
 Mouse 1 T A LeftClickTitleBehaviour
