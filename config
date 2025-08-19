@@ -52,8 +52,7 @@ AddToFunc MaximizeAndRaise
 
 DestroyFunc Rearrange
 AddToFunc Rearrange
-+ I FvwmRearrange -cascade -incx 2 -incy 4
-+ I Schedule 1000 ThisWindow Raise
++ I FvwmRearrange -cascade -noraise -flatx -flaty -incx 2 -incy 2 -cascadew 85 -cascadeh 85
 
 FocusStyle * SortWindowListByFocus
 Style * ClickToFocus, ClickToFocusPassesClickOff
