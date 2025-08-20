@@ -1,7 +1,6 @@
 DestroyFunc StartFunction
 AddToFunc StartFunction
 + I Module FvwmButtons
-+ I Module FvwmEvent
 
 DefaultFont "xft:DejaVu Sans:bold:size=8:antialias=True"
 
@@ -15,6 +14,7 @@ DestroyFunc LeftClickTitleBehaviour
 AddToFunc LeftClickTitleBehaviour
 + M Move
 + C Maximize
++ I Raise
 
 DestroyFunc Screenshot
 AddToFunc Screenshot
@@ -26,9 +26,10 @@ AddToFunc Record
 
 AddToMenu MainMenu
 + "Restart Fvwm (&r)" Restart
-+ "Rofi (&x)" RofiKeyboard
-+ "Maximise (&m)" ThisWindow Maximize
-+ "Rearrange (&a)" Rearrange
++ "Rofi (&x)" Rofi
++ "Maximise (&m)" MaximizeAndRaise
++ "Autotile (&a)" FvwmRearrange
++ "Cascade (&c)" AutoCascade
 + "System (&u)" Popup SystemMenu
 
 AddToMenu SystemMenu
@@ -37,35 +38,36 @@ AddToMenu SystemMenu
 + "Sleep (&s)" Exec exec systemctl suspend
 + "Logout (&l)" Exec exec loginctl kill-user `whoami`
 
-DestroyFunc RofiKeyboard
-AddToFunc RofiKeyboard
+DestroyFunc Rofi
+AddToFunc Rofi
 + I Exec exec rofi -config $[FVWM_USERDIR]/config.rasi -show combi
-
-DestroyFunc RofiMouse
-AddToFunc RofiMouse
-+ I Exec exec rofi -config $[FVWM_USERDIR]/config.rasi -show combi -hover-select -me-select-entry '' -me-accept-entry MousePrimary
 
 DestroyFunc MaximizeAndRaise
 AddToFunc MaximizeAndRaise
 + I Maximize
 + I Raise
 
-DestroyFunc Rearrange
-AddToFunc Rearrange
-+ I FvwmRearrange -cascade -noraise -flatx -flaty -incx 2 -incy 2 -cascadew 85 -cascadeh 85
+DestroyFunc AutoCascade
+AddToFunc AutoCascade
++ I FvwmRearrange -cascade -noraise -flatx -flaty -incx 5 -incy 5 -cascadew 50 -cascadeh 50
+
+DestroyFunc FocusAndRaise
+AddToFunc FocusAndRaise
++ I Focus
++ I Raise
 
 FocusStyle * SortWindowListByFocus
 Style * ClickToFocus, ClickToFocusPassesClickOff
 
 AddButtonStyle 2 Vector 4 35x35@3 65x65@3 35x65@4 65x35@3
 
-Style FvwmButtons !Title, !Borders, !Handles, Sticky, NeverFocus
-Style firefox-esr !Title
-Style "WhatsApp Web" !Title
+Style FvwmButtons !Title, !Borders, !Handles, Sticky, NeverFocus, WindowListSkip
+
+EwmhBaseStruts 0 0 0 30
 
 Mouse 1 2 A Close
 Mouse 1 T A LeftClickTitleBehaviour
-Mouse 1 R A RofiMouse
+Mouse 1 R A Rofi
 Mouse 3 R A Menu MainMenu
 
 Key Print A N Screenshot
@@ -75,15 +77,29 @@ Key Tab A M WindowList Root c c NoDeskSort, SelectOnRelease Meta_L, CurrentAtEnd
 Key Super_L A A Menu MainMenu
 
 DestroyModuleConfig FvwmButtons:*
-*FvwmButtons: Geometry 220x60-0
-*FvwmButtons: Columns 2
+*FvwmButtons: Geometry 1920x30+0-0
+*FvwmButtons: Columns 100
 
-*FvwmButtons: (1x1, \
-              Swallow DateTime 'Module FvwmScript FvwmScript-DateTime')
+*FvwmButtons: (5x1, \
+              Title Start, \
+              Action (Mouse 1) Menu MainMenu, \
+              Font "xft:DejaVu Sans:bold:size=8:antialias=True")
 
-*FvwmButtons: (1x1, \
+*FvwmButtons: (75x1, \
+              Swallow FvwmIconMan 'Module FvwmIconMan')
+
+*FvwmButtons: (10x1, \
               Swallow(NoClose,UseOld) stalonetray)
 
-DestroyModuleConfig FvwmEvent:*
-*FvwmEvent: Cmd
-*FvwmEvent: add_window Rearrange
+*FvwmButtons: (10x1, \
+              Swallow DateTime 'Module FvwmScript FvwmScript-DateTime')
+
+DestroyModuleConfig FvwmIconMan:*
+*FvwmIconMan: ManagerGeometry 1x1
+*FvwmIconMan: ButtonGeometry 120x20
+*FvwmIconMan: Font "xft:DejaVu Sans:bold:size=8:antialias=True"
+*FvwmIconMan: Action Mouse 1 A sendcommand FocusAndRaise
+*FvwmIconMan: Action Mouse 2 A sendcommand Nop
+*FvwmIconMan: Action Mouse 3 A sendcommand Nop
+*FvwmIconMan: DrawIcons true
+
