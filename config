@@ -72,7 +72,10 @@ Colorset 0 fg Contrast, \
            hi #dd5500, \
            sh #000000
 
-Colorset 1 fg Contrast, bg grey20
+Colorset 1 fg Contrast, \
+           bg grey20, \
+           hi #552200, \
+           sh #000000
 
 Mouse 1 2 A Close
 Mouse 1 T A LeftClickTitleBehaviour
@@ -112,3 +115,8 @@ DestroyModuleConfig FvwmIconMan:*
 *FvwmIconMan: Action Mouse 2 A sendcommand Nop
 *FvwmIconMan: Action Mouse 3 A sendcommand Nop
 *FvwmIconMan: DrawIcons true
+*FvwmIconMan: Colorset 0
+*FvwmIconMan: FocusColorset 1
+
+DestroyModuleConfig FvwmScript:*
+*FvwmScript: DefaultColorset 0
