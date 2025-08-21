@@ -4,6 +4,8 @@ AddToFunc StartFunction
 
 DefaultFont "xft:DejaVu Sans:bold:size=8:antialias=True"
 
+ImagePath $HOME/.fvwm:+
+
 DestroyFunc WindowListFunc
 AddToFunc WindowListFunc
 + I FlipFocus
@@ -65,9 +67,12 @@ Style FvwmButtons !Title, !Borders, !Handles, Sticky, NeverFocus, WindowListSkip
 
 EwmhBaseStruts 0 0 0 30
 
-Colorset 0 fg Contrast, bg grey40
-Colorset 1 fg Contrast, bg grey20
+Colorset 0 fg Contrast, \
+           bg grey40, \
+           hi #dd5500, \
+           sh #000000
 
+Colorset 1 fg Contrast, bg grey20
 
 Mouse 1 2 A Close
 Mouse 1 T A LeftClickTitleBehaviour
