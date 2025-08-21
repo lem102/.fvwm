@@ -65,6 +65,10 @@ Style FvwmButtons !Title, !Borders, !Handles, Sticky, NeverFocus, WindowListSkip
 
 EwmhBaseStruts 0 0 0 30
 
+Colorset 0 fg Contrast, bg grey40
+Colorset 1 fg Contrast, bg grey20
+
+
 Mouse 1 2 A Close
 Mouse 1 T A LeftClickTitleBehaviour
 Mouse 1 R A Rofi
@@ -79,6 +83,7 @@ Key Super_L A A Menu MainMenu
 DestroyModuleConfig FvwmButtons:*
 *FvwmButtons: Geometry 1920x30+0-0
 *FvwmButtons: Columns 100
+*FvwmButtons: Colorset 0
 
 *FvwmButtons: (5x1, \
               Title Start, \
@@ -96,10 +101,9 @@ DestroyModuleConfig FvwmButtons:*
 
 DestroyModuleConfig FvwmIconMan:*
 *FvwmIconMan: ManagerGeometry 1x1
-*FvwmIconMan: ButtonGeometry 120x20
+*FvwmIconMan: ButtonGeometry 120x30
 *FvwmIconMan: Font "xft:DejaVu Sans:bold:size=8:antialias=True"
 *FvwmIconMan: Action Mouse 1 A sendcommand FocusAndRaise
 *FvwmIconMan: Action Mouse 2 A sendcommand Nop
 *FvwmIconMan: Action Mouse 3 A sendcommand Nop
 *FvwmIconMan: DrawIcons true
-
