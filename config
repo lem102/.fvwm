@@ -36,7 +36,7 @@ AddToMenu MainMenu
 
 AddToMenu SystemMenu
 + "Restart (&r)" Exec exec systemctl reboot
-+ "Shut Down (&u)" Exec exec systemctl suspend
++ "Shut Down (&u)" Exec exec systemctl poweroff
 + "Sleep (&s)" Exec exec systemctl suspend
 + "Logout (&l)" Exec exec loginctl kill-user `whoami`
 
@@ -99,6 +99,7 @@ DestroyModuleConfig FvwmButtons:*
               Font "xft:DejaVu Sans:bold:size=8:antialias=True")
 
 *FvwmButtons: (75x1, \
+              Frame 0, \
               Swallow FvwmIconMan 'Module FvwmIconMan')
 
 *FvwmButtons: (10x1, \
