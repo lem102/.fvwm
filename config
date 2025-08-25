@@ -26,7 +26,7 @@ DestroyFunc Record
 AddToFunc Record
 + I Exec exec simplescreenrecorder
 
-AddToMenu MainMenu
+AddToMenu StartMenu Start Title top
 + "Restart Fvwm (&r)" Restart
 + "Rofi (&x)" Rofi
 + "Maximise (&m)" MaximizeAndRaise
@@ -34,7 +34,7 @@ AddToMenu MainMenu
 + "Cascade (&c)" AutoCascade
 + "System (&u)" Popup SystemMenu
 
-AddToMenu SystemMenu
+AddToMenu SystemMenu System Title top
 + "Restart (&r)" Exec exec systemctl reboot
 + "Shut Down (&u)" Exec exec systemctl poweroff
 + "Sleep (&s)" Exec exec systemctl suspend
@@ -80,13 +80,13 @@ Colorset 1 fg Contrast, \
 Mouse 1 2 A Close
 Mouse 1 T A LeftClickTitleBehaviour
 Mouse 1 R A Rofi
-Mouse 3 R A Menu MainMenu
+Mouse 3 R A Menu StartMenu
 
 Key Print A N Screenshot
 Key Print A M Record
 Key Tab A M WindowList Root c c NoDeskSort, SelectOnRelease Meta_L, CurrentAtEnd, NoGeometry
 
-Key Super_L A A Menu MainMenu
+Key Super_L A A Menu StartMenu
 
 DestroyModuleConfig FvwmButtons:*
 *FvwmButtons: Geometry 1920x30+0-0
@@ -95,7 +95,7 @@ DestroyModuleConfig FvwmButtons:*
 
 *FvwmButtons: (5x1, \
               Title Start, \
-              Action (Mouse 1) Menu MainMenu, \
+              Action (Mouse 1) Menu StartMenu, \
               Font "xft:DejaVu Sans:bold:size=8:antialias=True")
 
 *FvwmButtons: (75x1, \
