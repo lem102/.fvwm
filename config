@@ -89,7 +89,7 @@ Key Tab A M WindowList Root c c NoDeskSort, SelectOnRelease Meta_L, CurrentAtEnd
 Key Super_L A A Menu StartMenu
 
 DestroyModuleConfig FvwmButtons:*
-*FvwmButtons: Geometry 1920x30+0-0
+*FvwmButtons: Geometry $[vp.width]x30+0-0
 *FvwmButtons: Columns 100
 *FvwmButtons: Colorset 0
 
