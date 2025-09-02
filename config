@@ -15,8 +15,13 @@ AddToFunc WindowListFunc
 DestroyFunc LeftClickTitleBehaviour
 AddToFunc LeftClickTitleBehaviour
 + M Move
-+ C Maximize
++ D Maximize
 + I Raise
+
+DestroyFunc LeftClickIconBehaviour
+AddToFunc LeftClickIconBehaviour
++ M Move
++ D Iconify "off"
 
 DestroyFunc Screenshot
 AddToFunc Screenshot
@@ -61,7 +66,9 @@ AddToFunc FocusAndRaise
 FocusStyle * SortWindowListByFocus
 Style * ClickToFocus, ClickToFocusPassesClickOff
 
-AddButtonStyle 2 Vector 4 35x35@3 65x65@3 35x65@4 65x35@3
+AddButtonStyle 2 Vector 4 25x25@3 75x75@3 25x75@4 75x25@3
+AddButtonStyle 4 Vector 5 25x25@3 75x25@3 75x75@3 25x75@3 25x25@3
+AddButtonStyle 6 Vector 2 25x50@3 75x50@3
 
 Style FvwmButtons !Title, !Borders, !Handles, Sticky, NeverFocus, WindowListSkip
 
@@ -78,13 +85,16 @@ Colorset 1 fg Contrast, \
            sh #000000
 
 Mouse 1 2 A Close
+Mouse 1 4 A Maximize
+Mouse 1 6 A Iconify
 Mouse 1 T A LeftClickTitleBehaviour
+Mouse 1 I A LeftClickIconBehaviour
 Mouse 1 R A Rofi
 Mouse 3 R A Menu StartMenu
 
 Key Print A N Screenshot
 Key Print A M Record
-Key Tab A M WindowList Root c c NoDeskSort, SelectOnRelease Meta_L, CurrentAtEnd, NoGeometry
+Key Tab A M WindowList Root c c NoDeskSort, SelectOnRelease Meta_L, CurrentAtEnd, NoGeometry, IconifiedAtEnd
 
 Key Super_L A A Menu StartMenu
 
