@@ -62,6 +62,7 @@ DestroyFunc FocusAndRaise
 AddToFunc FocusAndRaise
 + I Focus
 + I Raise
++ I Iconify "off"
 
 FocusStyle * SortWindowListByFocus
 Style * ClickToFocus, ClickToFocusPassesClickOff
