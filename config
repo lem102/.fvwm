@@ -6,6 +6,18 @@ DefaultFont "xft:DejaVu Sans:bold:size=8:antialias=True"
 
 ImagePath $HOME/.fvwm:+
 
+# SelectWindow(shouldWarp: boolean)
+AddToFunc SelectWindow
++ I Focus
++ I Iconify false
++ I Raise
++ I Test ($0) WarpToWindow 50 50
+
+DestroyFunc EmacsRofi
+AddToFunc EmacsRofi
++ I Next (CurrentDesk, "*Emacs*") SelectWindow True
++ I Exec exec emacsclient -e "(jacob-rofi)"
+
 DestroyFunc WindowListFunc
 AddToFunc WindowListFunc
 + I FlipFocus
@@ -97,7 +109,7 @@ Key Print A N Screenshot
 Key Print A M Record
 Key Tab A M WindowList Root c c NoDeskSort, SelectOnRelease Meta_L, CurrentAtEnd, NoGeometry, IconifiedAtEnd
 
-Key Super_L A A Menu StartMenu
+Key Super_L A A EmacsRofi
 
 DestroyModuleConfig FvwmButtons:*
 *FvwmButtons: Geometry $[vp.width]x30+0-0
