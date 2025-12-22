@@ -11,7 +11,7 @@ AddToFunc SelectWindow
 + I Focus
 + I Iconify false
 + I Raise
-+ I Test ($0) WarpToWindow 50 50
++ I Test ($0) WarpToWindow 0 0
 
 DestroyFunc EmacsRofi
 AddToFunc EmacsRofi
@@ -50,12 +50,27 @@ AddToFunc FocusAndRaise
 + I Raise
 + I Iconify "off"
 
+# ResizeMove frame means we include the frame of each window in the percentages given to Resize
+
+DestroyFunc MoveWindowLeftSide
+AddToFunc MoveWindowLeftSide
++ I ResizeMove frame 50wa 100wa 0 0
++ I SelectWindow True
+
+DestroyFunc MoveWindowRightSide
+AddToFunc MoveWindowRightSide
++ I ResizeMove frame 50wa 100wa 50 0
++ I SelectWindow True
+
 FocusStyle * SortWindowListByFocus
 Style * ClickToFocus, ClickToFocusPassesClickOff
 
+AddButtonStyle 1 Vector 5 25x25@3 75x25@3 75x75@3 25x75@3 25x25@3
+AddButtonStyle 3 Active Vector 4 30x50@3 70x70@3 70x30@3 30x50@3
+AddButtonStyle 5 Active Vector 4 70x50@3 30x70@3 30x30@3 70x50@3
+
 AddButtonStyle 2 Vector 4 25x25@3 75x75@3 25x75@4 75x25@3
-AddButtonStyle 4 Vector 5 25x25@3 75x25@3 75x75@3 25x75@3 25x25@3
-AddButtonStyle 6 Vector 2 25x50@3 75x50@3
+AddButtonStyle 4 Vector 2 25x50@3 75x50@3
 
 Style FvwmButtons !Title, !Borders, !Handles, Sticky, NeverFocus, WindowListSkip
 
@@ -72,10 +87,16 @@ Colorset 1 fg Contrast, \
            sh #000000
 
 Mouse 1 2 A Close
-Mouse 1 4 A Maximize
-Mouse 1 6 A Iconify
+Mouse 1 4 A Iconify
+
+Mouse 1 1 A Maximize
+Mouse 1 3 A MoveWindowLeftSide
+Mouse 1 5 A MoveWindowRightSide
+
 Mouse 1 T A LeftClickTitleBehaviour
+
 Mouse 1 I A LeftClickIconBehaviour
+
 Mouse 1 R A EmacsRofi
 Mouse 3 R A Menu StartMenu
 
