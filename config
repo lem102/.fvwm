@@ -15,8 +15,9 @@ AddToFunc SelectWindow
 
 DestroyFunc EmacsRofi
 AddToFunc EmacsRofi
-+ I Next (CurrentDesk, "*Emacs*") SelectWindow True
-+ I Exec exec emacsclient -e "(jacob-rofi)"
++ I Next ("*Emacs*") SelectWindow false
++ I Next ("*Emacs*") Exec exec emacsclient --eval "(jacob-rofi)"
++ I None ("*Emacs*") Exec exec emacs
 
 DestroyFunc WindowListFunc
 AddToFunc WindowListFunc
@@ -42,33 +43,6 @@ AddToFunc Screenshot
 DestroyFunc Record
 AddToFunc Record
 + I Exec exec simplescreenrecorder
-
-AddToMenu StartMenu Start Title top
-+ "Restart Fvwm (&r)" Restart
-+ "Rofi (&x)" Rofi
-+ "Maximise (&m)" MaximizeAndRaise
-+ "Autotile (&a)" FvwmRearrange
-+ "Cascade (&c)" AutoCascade
-+ "System (&u)" Popup SystemMenu
-
-AddToMenu SystemMenu System Title top
-+ "Restart (&r)" Exec exec systemctl reboot
-+ "Shut Down (&u)" Exec exec systemctl poweroff
-+ "Sleep (&s)" Exec exec systemctl suspend
-+ "Logout (&l)" Exec exec loginctl kill-user `whoami`
-
-DestroyFunc Rofi
-AddToFunc Rofi
-+ I Exec exec rofi -config $[FVWM_USERDIR]/config.rasi -show combi
-
-DestroyFunc MaximizeAndRaise
-AddToFunc MaximizeAndRaise
-+ I Maximize
-+ I Raise
-
-DestroyFunc AutoCascade
-AddToFunc AutoCascade
-+ I FvwmRearrange -cascade -noraise -flatx -flaty -incx 5 -incy 5 -cascadew 50 -cascadeh 50
 
 DestroyFunc FocusAndRaise
 AddToFunc FocusAndRaise
@@ -102,7 +76,7 @@ Mouse 1 4 A Maximize
 Mouse 1 6 A Iconify
 Mouse 1 T A LeftClickTitleBehaviour
 Mouse 1 I A LeftClickIconBehaviour
-Mouse 1 R A Rofi
+Mouse 1 R A EmacsRofi
 Mouse 3 R A Menu StartMenu
 
 Key Print A N Screenshot
