@@ -1,6 +1,30 @@
 DestroyFunc StartFunction
 AddToFunc StartFunction
-+ I Module FvwmButtons
++ I Module FvwmButtons TrayBox
++ I Module FvwmButtons ClockBox
++ I Module FvwmButtons SoundBox
++ I Module FvwmAuto FvwmAutohide -menter enter_handler
+
+DestroyFunc autohide
+AddToFunc autohide
++ I ThisWindow ($0) Deschedule $[w.id]
++ I ThisWindow ($0) ThisWindow (Shaded) WindowShade off
++ I TestRc (!Match) All ($0, !Shaded) autohide\_hide $1 $2
+
+DestroyFunc autohide_hide
+AddToFunc autohide_hide
++ I Schedule $0 $[w.id] WindowShade $1
+# set to a high layer
++ I Schedule $0 $[w.id] Layer 0 1000
++ I Schedule $0 $[w.id] Raise $1
++ I Schedule $0 $[w.id] Deschedule $[w.id]
+
+# Add the windows you want to autohide
+DestroyFunc enter_handler
+AddToFunc enter_handler
++ I autohide TrayBox 500 S
++ I autohide ClockBox 500 E
++ I autohide SoundBox 500 W
 
 DefaultFont "xft:DejaVu Sans:bold:size=8:antialias=True"
 
@@ -31,7 +55,7 @@ AddToFunc LeftClickTitleBehaviour
 + D Maximize
 + I Raise
 
-DestroyFunc LeftClickIconBehaviour
+# DestroyFunc LeftClickIconBehaviour
 AddToFunc LeftClickIconBehaviour
 + M Move
 + D Iconify "off"
@@ -66,15 +90,17 @@ FocusStyle * SortWindowListByFocus
 Style * ClickToFocus, ClickToFocusPassesClickOff
 
 AddButtonStyle 1 Vector 5 25x25@3 75x25@3 75x75@3 25x75@3 25x25@3
-AddButtonStyle 3 Active Vector 4 30x50@3 70x70@3 70x30@3 30x50@3
-AddButtonStyle 5 Active Vector 4 70x50@3 30x70@3 30x30@3 70x50@3
+AddButtonStyle 3 Vector 4 30x50@3 70x70@3 70x30@3 30x50@3
+AddButtonStyle 5 Vector 4 70x50@3 30x70@3 30x30@3 70x50@3
 
 AddButtonStyle 2 Vector 4 25x25@3 75x75@3 25x75@4 75x25@3
 AddButtonStyle 4 Vector 2 25x50@3 75x50@3
 
-Style FvwmButtons !Title, !Borders, !Handles, Sticky, NeverFocus, WindowListSkip
+Style TrayBox !Title, !Borders, !Handles, Sticky, NeverFocus, WindowListSkip
+Style ClockBox !Title, !Borders, !Handles, Sticky, NeverFocus, WindowListSkip
+Style SoundBox !Title, !Borders, !Handles, Sticky, NeverFocus, WindowListSkip
 
-EwmhBaseStruts 0 0 0 30
+EwmhBaseStruts 1 1 1 1
 
 Colorset 0 fg Contrast, \
            bg grey40, \
@@ -106,36 +132,25 @@ Key Tab A M WindowList Root c c NoDeskSort, SelectOnRelease Meta_L, CurrentAtEnd
 
 Key Super_L A A EmacsRofi
 
-DestroyModuleConfig FvwmButtons:*
-*FvwmButtons: Geometry $[vp.width]x30+0-0
-*FvwmButtons: Columns 100
-*FvwmButtons: Colorset 0
+DestroyModuleConfig TrayBox:*
+*TrayBox: Geometry 300x30-0-0
+*TrayBox: Columns 1
+*TrayBox: Rows 1
+*TrayBox: Colorset 0
+*TrayBox: (1x1, Swallow(NoClose, UseOld) stalonetray)
 
-*FvwmButtons: (5x1, \
-              Title Start, \
-              Action (Mouse 1) Menu StartMenu, \
-              Font "xft:DejaVu Sans:bold:size=8:antialias=True")
+DestroyModuleConfig ClockBox:*
+*ClockBox: Geometry 200x230-0+0
+*ClockBox: Columns 20
+*ClockBox: Rows 23
+*ClockBox: Colorset 0
+*ClockBox: (20x20, Swallow(NoClose,UseOld) xclock)
+*ClockBox: (20x3, Swallow DateTime 'Module FvwmScript FvwmScript-DateTime')
 
-*FvwmButtons: (75x1, \
-              Frame 0, \
-              Swallow FvwmIconMan 'Module FvwmIconMan')
-
-*FvwmButtons: (10x1, \
-              Swallow(NoClose,UseOld) stalonetray)
-
-*FvwmButtons: (10x1, \
-              Swallow DateTime 'Module FvwmScript FvwmScript-DateTime')
-
-DestroyModuleConfig FvwmIconMan:*
-*FvwmIconMan: ManagerGeometry 1x1
-*FvwmIconMan: ButtonGeometry 120x30
-*FvwmIconMan: Font "xft:DejaVu Sans:bold:size=8:antialias=True"
-*FvwmIconMan: Action Mouse 1 A sendcommand FocusAndRaise
-*FvwmIconMan: Action Mouse 2 A sendcommand Nop
-*FvwmIconMan: Action Mouse 3 A sendcommand Nop
-*FvwmIconMan: DrawIcons true
-*FvwmIconMan: Colorset 0
-*FvwmIconMan: FocusColorset 1
+DestroyModuleConfig SoundBox:*
+*SoundBox: Geometry 150x100+0+0
+*SoundBox: Colorset 0
+*SoundBox: (1x1, Swallow Volume 'Module FvwmScript FvwmScript-Volume')
 
 DestroyModuleConfig FvwmScript:*
 *FvwmScript: DefaultColorset 0

@@ -1,0 +1,42 @@
+WindowTitle {Volume}
+WindowSize  150 100
+Font "xft:DejaVu Sans:regular:size=10:antialias=True"
+Init
+ Begin
+   Set $volume = (GetOutput {exec pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+(?=%)' | head -n 1} 1 -1)
+
+   ChangeValue 2 $volume
+ End
+
+Widget 1
+Property
+ Type ItemDraw
+ Position 0 0
+ Title { Volume }
+ MaxValue 0
+ MinValue 0
+ Flags NoReliefString
+Main
+ Case message of
+  SingleClic :
+  Begin
+  End
+End
+
+Widget 2
+Property
+ Type HScrollBar
+ Size 149 0
+ Position 0 20
+ Title { Volume }
+ Value 0
+ MaxValue 100
+ MinValue 0
+ Flags NoReliefString
+Main
+ Case message of
+  SingleClic :
+  Begin
+   Do {Exec pactl set-sink-volume @DEFAULT_SINK@ } (GetValue 2) {%}
+  End
+End
