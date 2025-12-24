@@ -1,12 +1,23 @@
 WindowTitle {Volume}
 WindowSize  150 100
 Font "xft:DejaVu Sans:regular:size=10:antialias=True"
+
 Init
  Begin
    Set $volume = (GetOutput {exec pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+(?=%)' | head -n 1} 1 -1)
 
    ChangeValue 2 $volume
  End
+
+PeriodicTasks
+ Begin
+  If (RemainderOfDiv (GetTime) 5)==0 Then
+  Begin
+    Set $volume = (GetOutput {exec pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+(?=%)' | head -n 1} 1 -1)
+
+    ChangeValue 2 $volume
+  End
+End
 
 Widget 1
 Property
