@@ -88,13 +88,14 @@ AddToFunc MoveWindowRightSide
 
 FocusStyle * SortWindowListByFocus
 Style * ClickToFocus, ClickToFocusPassesClickOff
+Style * MwmBorder, DepressableBorder
 
-AddButtonStyle 1 Vector 5 25x25@3 75x25@3 75x75@3 25x75@3 25x25@3
-AddButtonStyle 3 Vector 4 30x50@3 70x70@3 70x30@3 30x50@3
-AddButtonStyle 5 Vector 4 70x50@3 30x70@3 30x30@3 70x50@3
+AddButtonStyle 1 Vector 5 20x20@3 80x20@3 80x80@3 20x80@3 20x20@3
+AddButtonStyle 3 Vector 4 20x50@3 80x80@3 80x20@3 20x50@3
+AddButtonStyle 5 Vector 4 80x50@3 20x80@3 20x20@3 80x50@3
 
-AddButtonStyle 2 Vector 4 25x25@3 75x75@3 25x75@4 75x25@3
-AddButtonStyle 4 Vector 2 25x50@3 75x50@3
+AddButtonStyle 2 Vector 4 20x20@3 80x80@3 20x80@4 80x20@3
+AddButtonStyle 4 Vector 2 20x50@3 80x50@3
 
 Style TrayBox !Title, !Borders, !Handles, Sticky, NeverFocus, WindowListSkip
 Style ClockBox !Title, !Borders, !Handles, Sticky, NeverFocus, WindowListSkip
