@@ -103,15 +103,8 @@ Style SoundBox !Title, !Borders, !Handles, Sticky, NeverFocus, WindowListSkip
 
 EwmhBaseStruts 1 1 1 1
 
-Colorset 0 fg Contrast, \
-           bg grey40, \
-           hi #dd5500, \
-           sh #000000
-
-Colorset 1 fg Contrast, \
-           bg grey20, \
-           hi #552200, \
-           sh #000000
+Colorset 0 fg #ffffff, bg #5e2a84, hi #8e44ad, sh #341f47
+Colorset 1 fg #d1d1d1, bg #1a1a1b, hi #2e2e2e, sh #0a0a0a
 
 Mouse 1 2 A Close
 Mouse 1 4 A Iconify
